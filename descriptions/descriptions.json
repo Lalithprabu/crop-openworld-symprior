@@ -1,0 +1,131 @@
+{
+ "okra_bank_15": {
+  "Healthy": [
+   "a photo of a healthy okra leaf, uniformly green with no spots or lesions",
+   "a healthy leaf of Abelmoschus esculentus with smooth green tissue"
+  ],
+  "Alternaria leaf spot": [
+   "a photo of an okra leaf with brown spots showing concentric rings",
+   "Alternaria leaf spot on okra: dark brown target-like lesions surrounded by a yellow halo"
+  ],
+  "Cercospora leaf spot": [
+   "a photo of an okra leaf with sooty black angular spots",
+   "Cercospora leaf spot on okra: brown irregular spots with yellowing and rolling of the leaf"
+  ],
+  "Downy mildew": [
+   "a photo of an okra leaf with yellow angular patches between the veins and dry brown areas",
+   "downy mildew on okra: chlorotic blotches on the upper surface and greyish growth underneath"
+  ],
+  "Leaf curl": [
+   "a photo of a curled and crinkled okra leaf with thickened veins",
+   "okra leaf curl virus: distorted, cupped leaf with vein clearing and small enations"
+  ],
+  "Phyllosticta leaf spot": [
+   "a photo of an okra leaf with large circular spots with tan centres",
+   "Phyllosticta leaf spot on okra: tan lesions with dark margins that thin out and tear"
+  ],
+  "Yellow vein mosaic": [
+   "a photo of an okra leaf with a bright yellow network of veins and mosaic yellowing",
+   "yellow vein mosaic virus on okra: vein clearing, yellow veins forming a net, chlorotic mosaic leaf"
+  ],
+  "Powdery mildew": [
+   "a photo of an okra leaf covered with white powdery patches",
+   "powdery mildew on okra: white to grey powdery fungal growth on the leaf surface"
+  ],
+  "Enation leaf curl": [
+   "a photo of an okra leaf curled upwards with small outgrowths on the underside veins",
+   "okra enation leaf curl virus: thickened veins with enations and twisted, curled leaves"
+  ],
+  "Bacterial leaf spot": [
+   "a photo of an okra leaf with small water-soaked angular spots",
+   "bacterial leaf spot on okra: dark angular water-soaked lesions limited by veins"
+  ],
+  "Anthracnose": [
+   "a photo of an okra leaf with sunken dark brown lesions",
+   "anthracnose on okra: irregular dark sunken necrotic lesions on the leaf"
+  ],
+  "Fusarium wilt": [
+   "a photo of a yellowing wilting okra leaf",
+   "fusarium wilt on okra: progressive yellowing and wilting of the whole leaf"
+  ],
+  "Jassid hopper burn": [
+   "a photo of an okra leaf with yellowing and browning margins curling downwards",
+   "leafhopper (jassid) damage on okra: hopper burn, yellow then brown leaf edges, downward cupping"
+  ],
+  "Spider mite damage": [
+   "a photo of an okra leaf with fine pale stippling and webbing",
+   "red spider mite damage on okra: tiny yellow speckles, bronzing and fine webs"
+  ],
+  "Nitrogen deficiency": [
+   "a photo of a uniformly pale yellow-green okra leaf",
+   "nitrogen deficiency in okra: general chlorosis of the whole leaf without spots"
+  ]
+ },
+ "tomato_bank_16": {
+  "Healthy": [
+   "a photo of a healthy green tomato leaf with no spots or lesions",
+   "healthy tomato leaflet: uniformly green, smooth surface, no discoloration"
+  ],
+  "Early blight": [
+   "a photo of a tomato leaf with brown spots showing concentric rings like a target",
+   "tomato early blight: dark brown lesions with concentric rings and a yellow halo on older leaves"
+  ],
+  "Septoria leaf spot": [
+   "a photo of a tomato leaf with many small circular spots with grey centres and dark borders",
+   "tomato septoria leaf spot: numerous small round lesions with tan-grey centres, dark margins and tiny black dots"
+  ],
+  "Bacterial spot": [
+   "a photo of a tomato leaf with small dark greasy water-soaked spots",
+   "tomato bacterial spot: small dark brown to black angular lesions, sometimes with yellow halos"
+  ],
+  "Late blight": [
+   "a photo of a tomato leaf with large irregular dark brown greasy patches",
+   "tomato late blight: large water-soaked grey-green to brown blotches, white mould on the underside in humid weather"
+  ],
+  "Mosaic virus": [
+   "a photo of a tomato leaf with a light and dark green mottled mosaic pattern",
+   "tomato mosaic virus: mottled light and dark green areas, distorted, puckered or fern-like leaflets"
+  ],
+  "Yellow leaf curl virus": [
+   "a photo of a small tomato leaf curled upwards with yellow margins",
+   "tomato yellow leaf curl virus: upward cupping, yellowing of leaflet edges, stunted crinkled leaves"
+  ],
+  "Leaf mold": [
+   "a photo of a tomato leaf with pale yellow patches on top and olive-green velvety mould underneath",
+   "tomato leaf mold: diffuse yellow spots on the upper surface with olive to brown fuzzy growth below"
+  ],
+  "Powdery mildew": [
+   "a photo of a tomato leaf covered with white powdery patches",
+   "tomato powdery mildew: white to grey powdery fungal growth on the leaf surface"
+  ],
+  "Fusarium wilt": [
+   "a photo of a yellowing wilting tomato leaf",
+   "tomato fusarium wilt: yellowing and wilting of leaves, often on one side of the plant"
+  ],
+  "Leaf miner": [
+   "a photo of a tomato leaf with winding white tunnels",
+   "leaf miner damage on tomato: pale serpentine mines and blotches inside the leaf"
+  ],
+  "Spider mite damage": [
+   "a photo of a tomato leaf with fine pale stippling and webbing",
+   "spider mite damage on tomato: tiny yellow speckles, bronzing and fine webs"
+  ],
+  "Nitrogen deficiency": [
+   "a photo of a uniformly pale yellow-green tomato leaf",
+   "nitrogen deficiency in tomato: general yellowing of older leaves without spots"
+  ],
+  "Magnesium deficiency": [
+   "a photo of a tomato leaf yellow between the veins while the veins stay green",
+   "magnesium deficiency in tomato: interveinal chlorosis of older leaves, veins remain green"
+  ],
+  "Target spot": [
+   "a photo of a tomato leaf with brown spots with light centres and faint rings",
+   "tomato target spot: brown necrotic lesions with pale centres and concentric zonation"
+  ],
+  "Gray leaf spot": [
+   "a photo of a tomato leaf with small grey-brown spots that crack in the centre",
+   "tomato gray leaf spot: small dark specks enlarging to grey-brown spots with shot-hole centres"
+  ]
+ },
+ "note": "First entries of each bank are the classes in the data; the rest are distractors. Written before the corresponding results were computed and not changed afterwards."
+}

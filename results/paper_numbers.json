@@ -1,0 +1,2702 @@
+{
+ "A|k0": {
+  "symprior": [
+   88.91041410414104,
+   88.91041410414104,
+   88.91041410414104
+  ],
+  "best_baseline": "clip_bioclip|zeroshot|0",
+  "best_baseline_mean": 86.02637693043597,
+  "inductive": 78.68730353970206,
+  "zeroshot": 72.87242039087057,
+  "nogap": 72.87242039087057
+ },
+ "A|k1": {
+  "symprior": [
+   93.40327948147461,
+   92.6765906634784,
+   94.10653800253087
+  ],
+  "best_baseline": "source|centroid|1",
+  "best_baseline_mean": 90.49384855699222,
+  "diff_mean": 2.909430924482416,
+  "diff_ci": [
+   0.3532112418335024,
+   5.984470051020091
+  ],
+  "wins": 10,
+  "n": 20,
+  "p_wilcoxon": 0.16495704650878906,
+  "gap_gain": 2.0399584449624064,
+  "gap_p": 0.069580078125,
+  "vs_same_probe": 8.24941568983687,
+  "vs_same_probe_p": 1.9073486328125e-06,
+  "vs_same_probe_wins": 20,
+  "inductive_vs_best": -2.5032909222241138,
+  "inductive_vs_best_p": 0.06372261047363281,
+  "inductive": 87.9905576347681,
+  "zeroshot": 72.86842556997033,
+  "nogap": 91.36332103651222
+ },
+ "A|k2": {
+  "symprior": [
+   94.70817843866169,
+   94.07510541442929,
+   95.25811217816329
+  ],
+  "best_baseline": "clip_bioclip|probe|2",
+  "best_baseline_mean": 95.64095415117721,
+  "diff_mean": -0.9327757125154925,
+  "diff_ci": [
+   -2.10563515420625,
+   0.3102966232961567
+  ],
+  "wins": 8,
+  "n": 20,
+  "p_wilcoxon": 0.10539817810058594,
+  "gap_gain": 0.7767795676717555,
+  "gap_p": 0.5958194732666016,
+  "vs_same_probe": 3.2130490155583056,
+  "vs_same_probe_p": 5.7220458984375e-06,
+  "vs_same_probe_wins": 19,
+  "inductive_vs_best": -3.9593143329202802,
+  "inductive_vs_best_p": 0.0005855560302734375,
+  "inductive": 91.68163981825691,
+  "zeroshot": 72.87369200055073,
+  "nogap": 93.93139887098995
+ },
+ "A|k5": {
+  "symprior": [
+   94.15974820150215,
+   93.61550722977654,
+   94.64875205104727
+  ],
+  "best_baseline": "source|probe|5",
+  "best_baseline_mean": 96.68603616921962,
+  "diff_mean": -2.5262879677174768,
+  "diff_ci": [
+   -3.173026967592522,
+   -1.8782492061755374
+  ],
+  "wins": 0,
+  "n": 20,
+  "p_wilcoxon": 1.9073486328125e-06,
+  "gap_gain": 0.903731014063571,
+  "gap_p": 0.05340584148798349,
+  "vs_same_probe": 2.058841663552573,
+  "vs_same_probe_p": 1.9073486328125e-06,
+  "vs_same_probe_wins": 20,
+  "inductive_vs_best": -4.2667721449060565,
+  "inductive_vs_best_p": 0.0001032027839634719,
+  "inductive": 92.41926402431356,
+  "zeroshot": 72.86375678524853,
+  "nogap": 93.25601718743859
+ },
+ "A|k10": {
+  "symprior": [
+   94.67996862485897,
+   94.10403514050131,
+   95.27357742415705
+  ],
+  "best_baseline": "source|probe|10",
+  "best_baseline_mean": 97.87666736400666,
+  "diff_mean": -3.1966987391476764,
+  "diff_ci": [
+   -3.5926142943510215,
+   -2.8154497502957225
+  ],
+  "wins": 0,
+  "n": 20,
+  "p_wilcoxon": 1.9073486328125e-06,
+  "gap_gain": 0.5278493122725074,
+  "gap_p": 0.039989471435546875,
+  "vs_same_probe": 0.9425712943203486,
+  "vs_same_probe_p": 0.001209259033203125,
+  "vs_same_probe_wins": 15,
+  "inductive_vs_best": -3.714546497679256,
+  "inductive_vs_best_p": 1.9073486328125e-06,
+  "inductive": 94.1621208663274,
+  "zeroshot": 72.89738492045325,
+  "nogap": 94.15211931258646
+ },
+ "A|k20": {
+  "symprior": [
+   94.1260551421568,
+   93.6115887095867,
+   94.62260661272234
+  ],
+  "best_baseline": "source|probe|20",
+  "best_baseline_mean": 98.29635215666791,
+  "diff_mean": -4.170297014511117,
+  "diff_ci": [
+   -4.608400067440618,
+   -3.7614946763085166
+  ],
+  "wins": 0,
+  "n": 20,
+  "p_wilcoxon": 1.9073486328125e-06,
+  "gap_gain": 0.8097823538313165,
+  "gap_p": 0.002225180116411056,
+  "vs_same_probe": 0.3018792336078754,
+  "vs_same_probe_p": 0.2548092680556696,
+  "vs_same_probe_wins": 11,
+  "inductive_vs_best": -4.5200600620875155,
+  "inductive_vs_best_p": 1.9073486328125e-06,
+  "inductive": 93.77629209458041,
+  "zeroshot": 72.91164580654005,
+  "nogap": 93.31627278832548
+ },
+ "A|k40": {
+  "symprior": [
+   94.16894699378825,
+   93.81923996665917,
+   94.50363731244394
+  ],
+  "best_baseline": "clip_bioclip|probe|40",
+  "best_baseline_mean": 98.76660052838646,
+  "diff_mean": -4.5976535345982015,
+  "diff_ci": [
+   -4.872061970516807,
+   -4.317990514197114
+  ],
+  "wins": 0,
+  "n": 20,
+  "p_wilcoxon": 8.844915021211901e-05,
+  "gap_gain": 0.4940651823981078,
+  "gap_p": 0.0008322016561754946,
+  "vs_same_probe": -0.5740529321460635,
+  "vs_same_probe_p": 0.001644006329825974,
+  "vs_same_probe_wins": 3,
+  "inductive_vs_best": -4.502933693091272,
+  "inductive_vs_best_p": 1.9073486328125e-06,
+  "inductive": 94.2636668352952,
+  "zeroshot": 72.81431216319785,
+  "nogap": 93.67488181139016
+ },
+ "B|k0": {
+  "symprior": [
+   61.70779697454738,
+   61.70779697454738,
+   61.70779697454738
+  ],
+  "best_baseline": "clip_bioclip|zeroshot|0",
+  "best_baseline_mean": 34.66603767700081,
+  "inductive": 47.15953449084152,
+  "zeroshot": 27.806671449067434,
+  "nogap": 27.806671449067434,
+  "yvmv_recall_symprior": 43.29896907216495
+ },
+ "B|k1": {
+  "symprior": [
+   77.92085775617882,
+   75.31078500906307,
+   80.45531462251272
+  ],
+  "best_baseline": "clip_bioclip|probe|1",
+  "best_baseline_mean": 71.42090718551266,
+  "diff_mean": 6.499950570666184,
+  "diff_ci": [
+   3.490020231924826,
+   9.401685591153045
+  ],
+  "wins": 15,
+  "n": 20,
+  "p_wilcoxon": 0.0007076263427734375,
+  "gap_gain": 27.201365515594155,
+  "gap_p": 1.9073486328125e-06,
+  "vs_same_probe": 7.695069003421514,
+  "vs_same_probe_p": 9.5367431640625e-06,
+  "vs_same_probe_wins": 18,
+  "inductive_vs_best": -2.6075108535163785,
+  "inductive_vs_best_p": 0.13272666931152344,
+  "inductive": 68.81339633199626,
+  "zeroshot": 27.914933305683935,
+  "nogap": 50.71949224058467,
+  "yvmv_recall_symprior": 45.48347209788798
+ },
+ "B|k2": {
+  "symprior": [
+   83.11907016313252,
+   80.78230484286097,
+   85.39610843443798
+  ],
+  "best_baseline": "clip_bioclip2|probe|2",
+  "best_baseline_mean": 83.11397031149639,
+  "diff_mean": 0.0050998516361296705,
+  "diff_ci": [
+   -1.9094014163326143,
+   1.940781145931002
+  ],
+  "wins": 8,
+  "n": 20,
+  "p_wilcoxon": 0.8405336616716674,
+  "gap_gain": 19.333267220670358,
+  "gap_p": 1.9073486328125e-06,
+  "vs_same_probe": 0.0050998516361296705,
+  "vs_same_probe_p": 0.8405336616716674,
+  "vs_same_probe_wins": 8,
+  "inductive_vs_best": -4.3700073284529335,
+  "inductive_vs_best_p": 0.006389617919921875,
+  "inductive": 78.74396298304347,
+  "zeroshot": 27.738783079418816,
+  "nogap": 63.785802942462155,
+  "yvmv_recall_symprior": 53.16178893627652
+ },
+ "C|k0": {
+  "symprior": [
+   23.474004314761473,
+   23.474004314761473,
+   23.474004314761473
+  ],
+  "best_baseline": "clip_bioclip|zeroshot|0",
+  "best_baseline_mean": 15.428783127475068,
+  "inductive": 24.042786217332313,
+  "zeroshot": 10.95183767446359,
+  "nogap": 10.95183767446359
+ },
+ "C|k1": {
+  "symprior": [
+   31.190039414125334,
+   30.181466035271097,
+   32.26636558153666
+  ],
+  "best_baseline": "clip_bioclip|probe|1",
+  "best_baseline_mean": 30.0598088299969,
+  "diff_mean": 1.13023058412844,
+  "diff_ci": [
+   -0.31444906319438826,
+   2.5516731072026486
+  ],
+  "wins": 14,
+  "n": 20,
+  "p_wilcoxon": 0.17685317993164062,
+  "gap_gain": 12.262302791841346,
+  "gap_p": 1.9073486328125e-06,
+  "vs_same_probe": 2.3820446985873374,
+  "vs_same_probe_p": 0.0004825592041015625,
+  "vs_same_probe_wins": 16,
+  "inductive_vs_best": -4.483319249554594,
+  "inductive_vs_best_p": 0.0001678466796875,
+  "inductive": 25.576489580442306,
+  "zeroshot": 10.950279276364942,
+  "nogap": 18.92773662228399
+ },
+ "C|k2": {
+  "symprior": [
+   36.40534116458173,
+   35.28632026871138,
+   37.53209745241001
+  ],
+  "best_baseline": "clip_bioclip|probe|2",
+  "best_baseline_mean": 35.09520813742744,
+  "diff_mean": 1.3101330271543001,
+  "diff_ci": [
+   -0.21999470159856466,
+   2.775665017506274
+  ],
+  "wins": 13,
+  "n": 20,
+  "p_wilcoxon": 0.10539817810058594,
+  "gap_gain": 8.852834462288968,
+  "gap_p": 1.9073486328125e-06,
+  "vs_same_probe": 1.5884279719416186,
+  "vs_same_probe_p": 0.0042209625244140625,
+  "vs_same_probe_wins": 17,
+  "inductive_vs_best": -7.30194284094725,
+  "inductive_vs_best_p": 3.814697265625e-06,
+  "inductive": 27.79326529648018,
+  "zeroshot": 10.955495506411985,
+  "nogap": 27.552506702292767
+ },
+ "C|k5": {
+  "symprior": [
+   43.781151217427734,
+   42.79472995569299,
+   44.681970945093006
+  ],
+  "best_baseline": "clip_bioclip|probe|5",
+  "best_baseline_mean": 43.14592745004296,
+  "diff_mean": 0.6352237673847696,
+  "diff_ci": [
+   -0.44017426361304457,
+   1.7316768370935924
+  ],
+  "wins": 12,
+  "n": 20,
+  "p_wilcoxon": 0.3117942810058594,
+  "gap_gain": 3.117979115745674,
+  "gap_p": 0.0003223419189453125,
+  "vs_same_probe": 1.2066986448514627,
+  "vs_same_probe_p": 0.012079238891601562,
+  "vs_same_probe_wins": 16,
+  "inductive_vs_best": -3.545266233649072,
+  "inductive_vs_best_p": 0.0001049041748046875,
+  "inductive": 39.60066121639389,
+  "zeroshot": 10.917816603996545,
+  "nogap": 40.663172101682065
+ },
+ "C|k10": {
+  "symprior": [
+   49.10846377739904,
+   47.828182071188664,
+   50.326949910733816
+  ],
+  "best_baseline": "clip_bioclip|probe|10",
+  "best_baseline_mean": 50.4665788177601,
+  "diff_mean": -1.3581150403610551,
+  "diff_ci": [
+   -2.3671801741283653,
+   -0.3167846495569411
+  ],
+  "wins": 5,
+  "n": 20,
+  "p_wilcoxon": 0.017181396484375,
+  "gap_gain": 1.3649598528486364,
+  "gap_p": 0.0003223419189453125,
+  "vs_same_probe": 0.7412943056594887,
+  "vs_same_probe_p": 0.06372261047363281,
+  "vs_same_probe_wins": 13,
+  "inductive_vs_best": -1.7850647779057205,
+  "inductive_vs_best_p": 0.0023250579833984375,
+  "inductive": 48.68151403985438,
+  "zeroshot": 10.999071183682204,
+  "nogap": 47.7435039245504
+ },
+ "C|k20": {
+  "symprior": [
+   52.37698904104737,
+   51.25112487822282,
+   53.54441106594091
+  ],
+  "best_baseline": "clip_bioclip|probe|20",
+  "best_baseline_mean": 54.63242197145943,
+  "diff_mean": -2.2554329304120495,
+  "diff_ci": [
+   -3.7184832035234607,
+   -0.9136896291350041
+  ],
+  "wins": 4,
+  "n": 20,
+  "p_wilcoxon": 0.00365447998046875,
+  "gap_gain": -0.11104867600766041,
+  "gap_p": 0.8694877624511719,
+  "vs_same_probe": -0.8302331366215959,
+  "vs_same_probe_p": 0.012079238891601562,
+  "vs_same_probe_wins": 6,
+  "inductive_vs_best": -2.1408380428287974,
+  "inductive_vs_best_p": 0.00485992431640625,
+  "inductive": 52.49158392863062,
+  "zeroshot": 10.834437518962227,
+  "nogap": 52.488037717055036
+ },
+ "tau": {
+  "bioclip2": 4,
+  "bioclip": 1
+ },
+ "info": {
+  "A": {
+   "n_images": 1082,
+   "per_class": [
+    542,
+    540,
+    0,
+    0
+   ],
+   "n_groups": 1060,
+   "classes": [
+    "Healthy",
+    "Cercospora leaf spot"
+   ],
+   "max_k": 265
+  },
+  "B": {
+   "n_images": 252,
+   "per_class": [
+    46,
+    41,
+    68,
+    97
+   ],
+   "n_groups": 73,
+   "classes": [
+    "Healthy",
+    "Cercospora leaf spot",
+    "Leaf curl",
+    "Yellow vein mosaic"
+   ],
+   "max_k": 3
+  },
+  "C": {
+   "n_images": 726,
+   "per_class": [
+    63,
+    85,
+    145,
+    107,
+    110,
+    53,
+    73,
+    90
+   ],
+   "n_groups": 711,
+   "classes": [
+    "Healthy",
+    "Early blight",
+    "Septoria leaf spot",
+    "Bacterial spot",
+    "Late blight",
+    "Mosaic virus",
+    "Yellow leaf curl virus",
+    "Leaf mold"
+   ],
+   "max_k": 26
+  }
+ },
+ "finetune": {
+  "A": {
+   "mnv3_ft_imagenet|ft|1": [
+    88.57437782708446,
+    4.179520628955661
+   ],
+   "mnv3_ft_source|ft|1": [
+    83.89600101509265,
+    6.048988832641328
+   ],
+   "mnv3_ft_imagenet|ft|2": [
+    93.12329615861215,
+    4.089423153951081
+   ],
+   "mnv3_ft_source|ft|2": [
+    86.16226077378494,
+    3.1759668231921507
+   ],
+   "mnv3_ft_imagenet|ft|5": [
+    97.87552844226396,
+    1.405348945654113
+   ],
+   "mnv3_ft_source|ft|5": [
+    95.21255116740788,
+    3.495603563746109
+   ],
+   "mnv3_ft_imagenet|ft|10": [
+    98.85104270109235,
+    0.8585352439184651
+   ],
+   "mnv3_ft_source|ft|10": [
+    96.80135607112868,
+    1.1709368081043774
+   ],
+   "mnv3_ft_imagenet|ft|20": [
+    99.82688602341781,
+    0.07191536515569685
+   ],
+   "mnv3_ft_source|ft|20": [
+    99.71168582211985,
+    0.34364935939301294
+   ]
+  },
+  "B": {
+   "mnv3_ft_imagenet|ft|1": [
+    53.99547125335116,
+    10.922880449927879
+   ],
+   "mnv3_ft_source|ft|1": [
+    56.510098872688715,
+    6.995952095741526
+   ],
+   "mnv3_ft_imagenet|ft|2": [
+    57.795279730994025,
+    14.18036697668307
+   ],
+   "mnv3_ft_source|ft|2": [
+    67.71635573050875,
+    3.2120398188573644
+   ]
+  }
+ },
+ "open": {
+  "source_loco|bioclip2|k1": {
+   "auroc_symprior": [
+    59.8635209262061,
+    11.2519802692381
+   ],
+   "fpr95_symprior": [
+    84.64467154361229,
+    12.467722696803158
+   ],
+   "auroc_centroid": [
+    52.47599066207619,
+    18.254487285040298
+   ],
+   "fpr95_centroid": [
+    84.82487741168282,
+    18.23830770623101
+   ],
+   "auroc_knn": [
+    52.47599066207619,
+    18.254487285040298
+   ],
+   "fpr95_knn": [
+    84.82487741168282,
+    18.23830770623101
+   ],
+   "auroc_msp": [
+    48.95775897785077,
+    12.484593300456067
+   ],
+   "fpr95_msp": [
+    86.56723304068159,
+    12.004365704179799
+   ],
+   "name_img_top1": [
+    19.599873600430286,
+    16.504474223175443
+   ],
+   "name_group_top1": [
+    16.666666666666668,
+    37.26779962499649
+   ],
+   "name_group_top3": [
+    83.33333333333333,
+    37.2677996249965
+   ],
+   "per_class_name_group_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_group_Alternaria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Cercospora leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Downy mildew": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Leaf curl": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Phyllosticta leaf spot": [
+    0.0,
+    0.0
+   ],
+   "symprior_vs_centroid_p": 0.0019889774924276207,
+   "symprior_vs_msp_p": 4.2951161476076524e-05,
+   "symprior_vs_knn_p": 0.0019889774924276207
+  },
+  "source_loco|bioclip2|k2": {
+   "auroc_symprior": [
+    62.600239156971746,
+    12.453852542494552
+   ],
+   "fpr95_symprior": [
+    79.02850287332548,
+    17.375527506960697
+   ],
+   "auroc_centroid": [
+    53.92613338912653,
+    19.903232067982273
+   ],
+   "fpr95_centroid": [
+    82.43255220586715,
+    19.70611279704985
+   ],
+   "auroc_knn": [
+    53.496224964073356,
+    19.33269516758904
+   ],
+   "fpr95_knn": [
+    83.1678019140532,
+    19.168482160900904
+   ],
+   "auroc_msp": [
+    49.092507788539855,
+    13.065677082294494
+   ],
+   "fpr95_msp": [
+    85.10419247805302,
+    11.697791812771282
+   ],
+   "name_img_top1": [
+    19.606367055546645,
+    16.406389785490113
+   ],
+   "name_group_top1": [
+    18.333333333333332,
+    38.69395588747967
+   ],
+   "name_group_top3": [
+    83.33333333333333,
+    37.2677996249965
+   ],
+   "per_class_name_group_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_group_Alternaria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Cercospora leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Downy mildew": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Leaf curl": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Phyllosticta leaf spot": [
+    10.0,
+    30.0
+   ],
+   "symprior_vs_centroid_p": 0.0007083224313063217,
+   "symprior_vs_msp_p": 3.6487490319576482e-06,
+   "symprior_vs_knn_p": 0.0002842235335029564
+  },
+  "source_loco|bioclip2|k5": {
+   "auroc_symprior": [
+    65.05919678797872,
+    12.615033755133888
+   ],
+   "fpr95_symprior": [
+    74.16043433398909,
+    21.48680582159899
+   ],
+   "auroc_centroid": [
+    55.17592159515315,
+    20.042193520003586
+   ],
+   "fpr95_centroid": [
+    81.40351527397888,
+    21.018525774563205
+   ],
+   "auroc_knn": [
+    54.48628531048226,
+    20.07347375021259
+   ],
+   "fpr95_knn": [
+    80.2910705750647,
+    21.781325620266095
+   ],
+   "auroc_msp": [
+    52.175027636948926,
+    12.051879244236591
+   ],
+   "fpr95_msp": [
+    81.75290552356951,
+    12.262397412073764
+   ],
+   "name_img_top1": [
+    19.749446323002978,
+    16.727750836006184
+   ],
+   "name_group_top1": [
+    20.0,
+    40.0
+   ],
+   "name_group_top3": [
+    83.33333333333333,
+    37.2677996249965
+   ],
+   "per_class_name_group_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_group_Alternaria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Cercospora leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Downy mildew": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Leaf curl": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Phyllosticta leaf spot": [
+    20.0,
+    40.0
+   ],
+   "symprior_vs_centroid_p": 0.00032756810058906917,
+   "symprior_vs_msp_p": 4.956868670525348e-07,
+   "symprior_vs_knn_p": 0.00010152152512069407
+  },
+  "source_loco|bioclip|k1": {
+   "auroc_symprior": [
+    57.0911719545214,
+    15.228660604579668
+   ],
+   "fpr95_symprior": [
+    82.2849832345037,
+    19.125505961223798
+   ],
+   "auroc_centroid": [
+    52.731984888771876,
+    20.45472751597868
+   ],
+   "fpr95_centroid": [
+    80.94188990029586,
+    24.113881511652867
+   ],
+   "auroc_knn": [
+    52.731984888771876,
+    20.45472751597868
+   ],
+   "fpr95_knn": [
+    80.94188990029586,
+    24.113881511652867
+   ],
+   "auroc_msp": [
+    49.617365266469655,
+    14.122490721589848
+   ],
+   "fpr95_msp": [
+    85.93608466996731,
+    14.106024891588872
+   ],
+   "name_img_top1": [
+    6.939122678043161,
+    8.369810693006844
+   ],
+   "name_group_top1": [
+    0.0,
+    0.0
+   ],
+   "name_group_top3": [
+    33.333333333333336,
+    47.14045207910317
+   ],
+   "per_class_name_group_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Alternaria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Cercospora leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Downy mildew": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Leaf curl": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Phyllosticta leaf spot": [
+    0.0,
+    0.0
+   ]
+  },
+  "source_loco|bioclip|k2": {
+   "auroc_symprior": [
+    61.58497396852427,
+    13.259430733108402
+   ],
+   "fpr95_symprior": [
+    77.66734235890529,
+    20.437861742849762
+   ],
+   "auroc_centroid": [
+    54.13177264543437,
+    21.674606047495185
+   ],
+   "fpr95_centroid": [
+    76.26959901724376,
+    28.221003540309354
+   ],
+   "auroc_knn": [
+    53.727727775940046,
+    19.53562228035343
+   ],
+   "fpr95_knn": [
+    80.36963998234384,
+    22.49624258441414
+   ],
+   "auroc_msp": [
+    50.03947459022049,
+    16.70827780888358
+   ],
+   "fpr95_msp": [
+    84.23367046239741,
+    14.963385116042408
+   ],
+   "name_img_top1": [
+    6.985047511365616,
+    8.373548778585512
+   ],
+   "name_group_top1": [
+    0.0,
+    0.0
+   ],
+   "name_group_top3": [
+    33.333333333333336,
+    47.14045207910317
+   ],
+   "per_class_name_group_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Alternaria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Cercospora leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Downy mildew": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Leaf curl": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Phyllosticta leaf spot": [
+    0.0,
+    0.0
+   ]
+  },
+  "source_loco|bioclip|k5": {
+   "auroc_symprior": [
+    63.070250758524345,
+    12.977725124318834
+   ],
+   "fpr95_symprior": [
+    75.9664577679607,
+    23.508418066916114
+   ],
+   "auroc_centroid": [
+    55.221541750108706,
+    22.17858293344071
+   ],
+   "fpr95_centroid": [
+    76.09773464753836,
+    29.735111417255542
+   ],
+   "auroc_knn": [
+    54.80831266301524,
+    19.896755305049496
+   ],
+   "fpr95_knn": [
+    78.90847459850305,
+    22.86842605469042
+   ],
+   "auroc_msp": [
+    51.67945070322789,
+    15.850897242547067
+   ],
+   "fpr95_msp": [
+    83.01626841644529,
+    14.442421892204754
+   ],
+   "name_img_top1": [
+    7.185892285056754,
+    8.458043190168315
+   ],
+   "name_group_top1": [
+    0.0,
+    0.0
+   ],
+   "name_group_top3": [
+    33.333333333333336,
+    47.14045207910317
+   ],
+   "per_class_name_group_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Alternaria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Cercospora leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Downy mildew": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Leaf curl": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_group_Phyllosticta leaf spot": [
+    0.0,
+    0.0
+   ]
+  },
+  "fieldB|k1": {
+   "bioclip|auroc_centroid": [
+    71.30163072458019,
+    6.199726185873985
+   ],
+   "bioclip|fpr95_centroid": [
+    54.75878759962251,
+    8.762653504604538
+   ],
+   "bioclip|closed_bal_acc_centroid": [
+    87.99117586781604,
+    7.826254933125339
+   ],
+   "bioclip|auroc_knn": [
+    71.30163072458019,
+    6.199726185873985
+   ],
+   "bioclip|fpr95_knn": [
+    54.75878759962251,
+    8.762653504604538
+   ],
+   "bioclip|closed_bal_acc_knn": [
+    87.99117586781604,
+    7.826254933125339
+   ],
+   "bioclip|auroc_msp": [
+    79.73831374653216,
+    7.268563913968307
+   ],
+   "bioclip|fpr95_msp": [
+    56.757231353431166,
+    14.423128988018956
+   ],
+   "bioclip|closed_bal_acc_msp": [
+    88.0705342212153,
+    7.483291625045609
+   ],
+   "dinov2|auroc_centroid": [
+    71.76528497364362,
+    8.209863468943997
+   ],
+   "dinov2|fpr95_centroid": [
+    63.03251946338681,
+    12.101194827642809
+   ],
+   "dinov2|closed_bal_acc_centroid": [
+    72.55687374161387,
+    6.076670603300163
+   ],
+   "dinov2|auroc_knn": [
+    71.76528497364362,
+    8.209863468943997
+   ],
+   "dinov2|fpr95_knn": [
+    63.03251946338681,
+    12.101194827642809
+   ],
+   "dinov2|closed_bal_acc_knn": [
+    72.55687374161387,
+    6.076670603300163
+   ],
+   "dinov2|auroc_msp": [
+    75.01351256018258,
+    9.377877432408916
+   ],
+   "dinov2|fpr95_msp": [
+    63.468510277603784,
+    19.343150823675696
+   ],
+   "dinov2|closed_bal_acc_msp": [
+    73.32907875762302,
+    6.813992561054192
+   ],
+   "mnv3|auroc_centroid": [
+    74.60435818805489,
+    6.566714695813379
+   ],
+   "mnv3|fpr95_centroid": [
+    65.24579738455546,
+    12.633689778792682
+   ],
+   "mnv3|closed_bal_acc_centroid": [
+    65.85536456586732,
+    7.065410264641766
+   ],
+   "mnv3|auroc_knn": [
+    74.60435818805489,
+    6.566714695813379
+   ],
+   "mnv3|fpr95_knn": [
+    65.24579738455546,
+    12.633689778792682
+   ],
+   "mnv3|closed_bal_acc_knn": [
+    65.85536456586732,
+    7.065410264641766
+   ],
+   "mnv3|auroc_msp": [
+    68.95983503995441,
+    9.58913832003179
+   ],
+   "mnv3|fpr95_msp": [
+    66.95673310269977,
+    14.438547053015506
+   ],
+   "mnv3|closed_bal_acc_msp": [
+    68.44466061259004,
+    7.582022637231523
+   ],
+   "source|auroc_centroid": [
+    70.73052002518429,
+    7.745121541445777
+   ],
+   "source|fpr95_centroid": [
+    65.69060147828426,
+    11.378236743794663
+   ],
+   "source|closed_bal_acc_centroid": [
+    70.0874991491107,
+    9.747657918230097
+   ],
+   "source|auroc_knn": [
+    70.73052002518429,
+    7.745121541445777
+   ],
+   "source|fpr95_knn": [
+    65.69060147828426,
+    11.378236743794663
+   ],
+   "source|closed_bal_acc_knn": [
+    70.0874991491107,
+    9.747657918230097
+   ],
+   "source|auroc_msp": [
+    62.26026622128222,
+    8.782095579591271
+   ],
+   "source|fpr95_msp": [
+    75.79959108317684,
+    9.538989498850228
+   ],
+   "source|closed_bal_acc_msp": [
+    68.95282363897597,
+    8.434739859329405
+   ],
+   "clip:bioclip2|name_img_top1": [
+    25.190760106311764,
+    0.5624743231552088
+   ],
+   "clip:bioclip2|name_group_top1": [
+    40.0,
+    48.98979485566356
+   ],
+   "clip:bioclip2|name_group_top3": [
+    100.0,
+    0.0
+   ],
+   "clip:bioclip2|flag10_precision": [
+    80.4611111111111,
+    9.50789308228682
+   ],
+   "clip:bioclip2|flag10_name_top1": [
+    20.0,
+    40.0
+   ],
+   "clip:bioclip2|flag10_name_top3": [
+    65.0,
+    47.69696007084728
+   ],
+   "clip:bioclip2|flag20_precision": [
+    79.43365201936633,
+    8.134388457579622
+   ],
+   "clip:bioclip2|flag20_name_top1": [
+    20.0,
+    40.0
+   ],
+   "clip:bioclip2|flag20_name_top3": [
+    70.0,
+    45.8257569495584
+   ],
+   "clip:bioclip2|flag40_precision": [
+    65.08171385321252,
+    5.119373572547005
+   ],
+   "clip:bioclip2|flag40_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip2|flag40_name_top3": [
+    50.0,
+    50.0
+   ],
+   "clip:bioclip2|auroc_symprior_poolnoU": [
+    72.87987327076458,
+    5.1794792728783925
+   ],
+   "clip:bioclip2|name_group_top1_poolnoU": [
+    100.0,
+    0.0
+   ],
+   "clip:bioclip2|auroc_symprior": [
+    79.78566949143558,
+    4.872375654454988
+   ],
+   "clip:bioclip2|fpr95_symprior": [
+    60.415635885051984,
+    10.999845183524373
+   ],
+   "clip:bioclip2|closed_bal_acc_symprior": [
+    91.62574318267806,
+    3.800979862042424
+   ],
+   "clip:bioclip2|auroc_centroid": [
+    82.44294234585932,
+    3.931184177241078
+   ],
+   "clip:bioclip2|fpr95_centroid": [
+    59.80049037971092,
+    12.172651131328436
+   ],
+   "clip:bioclip2|closed_bal_acc_centroid": [
+    84.0796162573615,
+    7.39920608393148
+   ],
+   "clip:bioclip2|auroc_knn": [
+    82.44294234585932,
+    3.931184177241078
+   ],
+   "clip:bioclip2|fpr95_knn": [
+    59.80049037971092,
+    12.172651131328436
+   ],
+   "clip:bioclip2|closed_bal_acc_knn": [
+    84.0796162573615,
+    7.39920608393148
+   ],
+   "clip:bioclip2|auroc_msp": [
+    76.195362747965,
+    7.044556066831667
+   ],
+   "clip:bioclip2|fpr95_msp": [
+    62.693209344580204,
+    15.771089832131205
+   ],
+   "clip:bioclip2|closed_bal_acc_msp": [
+    85.90473038387452,
+    6.206369847029956
+   ],
+   "clip:bioclip|name_img_top1": [
+    1.1145500693647217,
+    0.12093950605451433
+   ],
+   "clip:bioclip|name_group_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|name_group_top3": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag10_precision": [
+    85.73333333333335,
+    13.297563129580745
+   ],
+   "clip:bioclip|flag10_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag10_name_top3": [
+    20.0,
+    40.0
+   ],
+   "clip:bioclip|flag20_precision": [
+    80.33623215051789,
+    10.534445117667625
+   ],
+   "clip:bioclip|flag20_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag20_name_top3": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag40_precision": [
+    71.33789352060833,
+    5.746178027663986
+   ],
+   "clip:bioclip|flag40_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag40_name_top3": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|auroc_symprior_poolnoU": [
+    76.41239223329578,
+    5.611143896930903
+   ],
+   "clip:bioclip|name_group_top1_poolnoU": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|auroc_symprior": [
+    85.47073290868362,
+    4.603997677775264
+   ],
+   "clip:bioclip|fpr95_symprior": [
+    44.36185253164104,
+    10.950687235206898
+   ],
+   "clip:bioclip|closed_bal_acc_symprior": [
+    91.06217314969373,
+    4.993940432198096
+   ],
+   "clip:bioclip|auroc_centroid": [
+    71.30163072458019,
+    6.199726185873985
+   ],
+   "clip:bioclip|fpr95_centroid": [
+    54.75878759962251,
+    8.762653504604538
+   ],
+   "clip:bioclip|closed_bal_acc_centroid": [
+    87.99117586781604,
+    7.826254933125339
+   ],
+   "clip:bioclip|auroc_knn": [
+    71.30163072458019,
+    6.199726185873985
+   ],
+   "clip:bioclip|fpr95_knn": [
+    54.75878759962251,
+    8.762653504604538
+   ],
+   "clip:bioclip|closed_bal_acc_knn": [
+    87.99117586781604,
+    7.826254933125339
+   ],
+   "clip:bioclip|auroc_msp": [
+    79.73831374653216,
+    7.268563913968307
+   ],
+   "clip:bioclip|fpr95_msp": [
+    56.757231353431166,
+    14.423128988018956
+   ],
+   "clip:bioclip|closed_bal_acc_msp": [
+    88.0705342212153,
+    7.483291625045609
+   ],
+   "symprior_vs_centroid_p": 0.06372261047363281,
+   "symprior_vs_msp_p": 0.13272666931152344,
+   "symprior_vs_knn_p": 0.06372261047363281
+  },
+  "fieldB|k2": {
+   "bioclip|auroc_centroid": [
+    78.03744455858853,
+    5.783449082754124
+   ],
+   "bioclip|fpr95_centroid": [
+    48.62730354713584,
+    11.754606090127321
+   ],
+   "bioclip|closed_bal_acc_centroid": [
+    94.12316115744969,
+    4.846738467672346
+   ],
+   "bioclip|auroc_knn": [
+    80.35033443371628,
+    5.130799991143812
+   ],
+   "bioclip|fpr95_knn": [
+    45.1410814082528,
+    10.63260307198634
+   ],
+   "bioclip|closed_bal_acc_knn": [
+    94.12316115744969,
+    4.846738467672346
+   ],
+   "bioclip|auroc_msp": [
+    85.22310100597014,
+    7.066712206452152
+   ],
+   "bioclip|fpr95_msp": [
+    47.60970446502236,
+    16.64782069909638
+   ],
+   "bioclip|closed_bal_acc_msp": [
+    93.47219984753217,
+    5.14237374789291
+   ],
+   "dinov2|auroc_centroid": [
+    76.05035515218808,
+    6.581432539176213
+   ],
+   "dinov2|fpr95_centroid": [
+    50.71054555164947,
+    10.497182042067129
+   ],
+   "dinov2|closed_bal_acc_centroid": [
+    80.52209048407761,
+    7.951297972626626
+   ],
+   "dinov2|auroc_knn": [
+    72.69086565329005,
+    6.8457886761885565
+   ],
+   "dinov2|fpr95_knn": [
+    53.726080309355154,
+    10.957447705694385
+   ],
+   "dinov2|closed_bal_acc_knn": [
+    80.52209048407761,
+    7.951297972626626
+   ],
+   "dinov2|auroc_msp": [
+    78.18129658690113,
+    5.643753727166659
+   ],
+   "dinov2|fpr95_msp": [
+    65.94700796618557,
+    18.495756777200473
+   ],
+   "dinov2|closed_bal_acc_msp": [
+    79.65051399854705,
+    7.723628404117602
+   ],
+   "mnv3|auroc_centroid": [
+    76.78188265888716,
+    6.88105147815112
+   ],
+   "mnv3|fpr95_centroid": [
+    55.45210294802445,
+    10.436116442616663
+   ],
+   "mnv3|closed_bal_acc_centroid": [
+    77.39266289448075,
+    11.397751206518423
+   ],
+   "mnv3|auroc_knn": [
+    75.25103505053124,
+    7.043162945430286
+   ],
+   "mnv3|fpr95_knn": [
+    58.61364267245705,
+    9.746356641489543
+   ],
+   "mnv3|closed_bal_acc_knn": [
+    77.39266289448075,
+    11.397751206518423
+   ],
+   "mnv3|auroc_msp": [
+    71.83573731060696,
+    8.02500254264318
+   ],
+   "mnv3|fpr95_msp": [
+    64.43902602127268,
+    11.820770978417439
+   ],
+   "mnv3|closed_bal_acc_msp": [
+    77.34982332714372,
+    11.904446915754026
+   ],
+   "source|auroc_centroid": [
+    79.4599674020079,
+    8.155450373669012
+   ],
+   "source|fpr95_centroid": [
+    58.146567859644335,
+    13.953350407263295
+   ],
+   "source|closed_bal_acc_centroid": [
+    76.962491878347,
+    10.942713889921862
+   ],
+   "source|auroc_knn": [
+    77.10510036102332,
+    7.416645136885645
+   ],
+   "source|fpr95_knn": [
+    58.40030658939527,
+    14.500269944922184
+   ],
+   "source|closed_bal_acc_knn": [
+    76.962491878347,
+    10.942713889921862
+   ],
+   "source|auroc_msp": [
+    65.16048499927948,
+    7.271645599231505
+   ],
+   "source|fpr95_msp": [
+    74.55556265527625,
+    11.643536577738034
+   ],
+   "source|closed_bal_acc_msp": [
+    76.03068440330792,
+    10.488920961978764
+   ],
+   "clip:bioclip2|name_img_top1": [
+    25.021703356410576,
+    1.7049526245718614
+   ],
+   "clip:bioclip2|name_group_top1": [
+    55.0,
+    49.749371855331
+   ],
+   "clip:bioclip2|name_group_top3": [
+    100.0,
+    0.0
+   ],
+   "clip:bioclip2|flag10_precision": [
+    86.72669792554703,
+    8.861398553732448
+   ],
+   "clip:bioclip2|flag10_name_top1": [
+    45.0,
+    49.749371855331
+   ],
+   "clip:bioclip2|flag10_name_top3": [
+    80.0,
+    40.0
+   ],
+   "clip:bioclip2|flag20_precision": [
+    85.29185421680796,
+    6.874905273865015
+   ],
+   "clip:bioclip2|flag20_name_top1": [
+    45.0,
+    49.749371855331
+   ],
+   "clip:bioclip2|flag20_name_top3": [
+    90.0,
+    30.0
+   ],
+   "clip:bioclip2|flag40_precision": [
+    76.91589091532107,
+    5.301343088959593
+   ],
+   "clip:bioclip2|flag40_name_top1": [
+    40.0,
+    48.98979485566356
+   ],
+   "clip:bioclip2|flag40_name_top3": [
+    70.0,
+    45.8257569495584
+   ],
+   "clip:bioclip2|auroc_symprior_poolnoU": [
+    81.2575047659455,
+    5.015808167542185
+   ],
+   "clip:bioclip2|name_group_top1_poolnoU": [
+    90.0,
+    30.0
+   ],
+   "clip:bioclip2|auroc_symprior": [
+    89.06807435513483,
+    3.3118245930617736
+   ],
+   "clip:bioclip2|fpr95_symprior": [
+    33.62472671585799,
+    8.981194606274798
+   ],
+   "clip:bioclip2|closed_bal_acc_symprior": [
+    93.30960257207417,
+    3.501917511866044
+   ],
+   "clip:bioclip2|auroc_centroid": [
+    86.48852312982413,
+    4.020674124862222
+   ],
+   "clip:bioclip2|fpr95_centroid": [
+    46.023417928689646,
+    11.772188658927083
+   ],
+   "clip:bioclip2|closed_bal_acc_centroid": [
+    91.93060343475143,
+    5.105159329276744
+   ],
+   "clip:bioclip2|auroc_knn": [
+    88.15150047377068,
+    4.235806699942708
+   ],
+   "clip:bioclip2|fpr95_knn": [
+    45.716047223874185,
+    13.877714756751674
+   ],
+   "clip:bioclip2|closed_bal_acc_knn": [
+    91.93060343475143,
+    5.105159329276744
+   ],
+   "clip:bioclip2|auroc_msp": [
+    78.4115849339241,
+    5.020772549484879
+   ],
+   "clip:bioclip2|fpr95_msp": [
+    60.741419254686626,
+    10.395235512412933
+   ],
+   "clip:bioclip2|closed_bal_acc_msp": [
+    92.78385479153101,
+    5.159462278139508
+   ],
+   "clip:bioclip|name_img_top1": [
+    1.1819805516315665,
+    0.1435599268084509
+   ],
+   "clip:bioclip|name_group_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|name_group_top3": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag10_precision": [
+    89.06560812730888,
+    10.90718691477033
+   ],
+   "clip:bioclip|flag10_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag10_name_top3": [
+    5.0,
+    21.79449471770337
+   ],
+   "clip:bioclip|flag20_precision": [
+    88.09854324932958,
+    6.46091085442748
+   ],
+   "clip:bioclip|flag20_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag20_name_top3": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag40_precision": [
+    80.74581280085883,
+    5.970979555033657
+   ],
+   "clip:bioclip|flag40_name_top1": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|flag40_name_top3": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|auroc_symprior_poolnoU": [
+    83.28810565968197,
+    5.681056719540654
+   ],
+   "clip:bioclip|name_group_top1_poolnoU": [
+    0.0,
+    0.0
+   ],
+   "clip:bioclip|auroc_symprior": [
+    90.92948959371128,
+    3.559600472250347
+   ],
+   "clip:bioclip|fpr95_symprior": [
+    30.69995820609507,
+    10.287362502175583
+   ],
+   "clip:bioclip|closed_bal_acc_symprior": [
+    94.73758223909283,
+    4.089544636641956
+   ],
+   "clip:bioclip|auroc_centroid": [
+    78.03744455858853,
+    5.783449082754124
+   ],
+   "clip:bioclip|fpr95_centroid": [
+    48.62730354713584,
+    11.754606090127321
+   ],
+   "clip:bioclip|closed_bal_acc_centroid": [
+    94.12316115744969,
+    4.846738467672346
+   ],
+   "clip:bioclip|auroc_knn": [
+    80.35033443371628,
+    5.130799991143812
+   ],
+   "clip:bioclip|fpr95_knn": [
+    45.1410814082528,
+    10.63260307198634
+   ],
+   "clip:bioclip|closed_bal_acc_knn": [
+    94.12316115744969,
+    4.846738467672346
+   ],
+   "clip:bioclip|auroc_msp": [
+    85.22355855728946,
+    7.066352103663712
+   ],
+   "clip:bioclip|fpr95_msp": [
+    47.60970446502236,
+    16.64782069909638
+   ],
+   "clip:bioclip|closed_bal_acc_msp": [
+    93.47219984753217,
+    5.14237374789291
+   ],
+   "symprior_vs_centroid_p": 0.01068878173828125,
+   "symprior_vs_msp_p": 1.9073486328125e-06,
+   "symprior_vs_knn_p": 0.5958194732666016
+  },
+  "fieldC_loco|bioclip2|k1": {
+   "auroc_symprior": [
+    57.03216015113651,
+    11.911760666220278
+   ],
+   "fpr95_symprior": [
+    85.68456337829892,
+    10.208993263283551
+   ],
+   "closed_bal_acc_symprior": [
+    33.83412195142596,
+    3.847678575820681
+   ],
+   "auroc_centroid": [
+    53.959819122205644,
+    9.682989620929288
+   ],
+   "fpr95_centroid": [
+    88.08870349092919,
+    9.586546488586531
+   ],
+   "closed_bal_acc_centroid": [
+    30.848562959337652,
+    4.653346783914309
+   ],
+   "auroc_knn": [
+    53.959792401587535,
+    9.682980043146525
+   ],
+   "fpr95_knn": [
+    88.08870349092919,
+    9.586546488586531
+   ],
+   "closed_bal_acc_knn": [
+    30.848562959337652,
+    4.653346783914309
+   ],
+   "auroc_msp": [
+    50.61929699123167,
+    11.875541846702182
+   ],
+   "fpr95_msp": [
+    89.83628914863954,
+    9.648816974380722
+   ],
+   "closed_bal_acc_msp": [
+    32.19874695710848,
+    4.466739917982969
+   ],
+   "name_img_top1": [
+    21.422149385029417,
+    19.25077412997835
+   ],
+   "name_group_top1": [
+    50.0,
+    50.0
+   ],
+   "name_group_top3": [
+    50.0,
+    50.0
+   ],
+   "per_class_name_group_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Healthy": [
+    64.62658312719986,
+    9.211242045458905
+   ],
+   "flag20_precision": [
+    16.365032536907535,
+    8.716496663984733
+   ],
+   "flag20_name_top1": [
+    5.0,
+    21.79449471770337
+   ],
+   "flag20_name_top3": [
+    15.0,
+    35.70714214271425
+   ],
+   "per_class_name_group_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Early blight": [
+    59.48116680254113,
+    4.424487446242476
+   ],
+   "per_class_name_group_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Septoria leaf spot": [
+    54.90711265185613,
+    6.748028052688744
+   ],
+   "per_class_name_group_Bacterial spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Bacterial spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Bacterial spot": [
+    53.28049599902266,
+    3.300923901486985
+   ],
+   "per_class_name_group_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Late blight": [
+    73.85117181668906,
+    2.720225790214772
+   ],
+   "per_class_name_group_Mosaic virus": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Mosaic virus": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Mosaic virus": [
+    45.496628704175876,
+    4.917134537593033
+   ],
+   "per_class_name_group_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Yellow leaf curl virus": [
+    42.66442015762436,
+    14.33653554486989
+   ],
+   "per_class_name_group_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Leaf mold": [
+    61.949701949982966,
+    2.8854256865418435
+   ],
+   "symprior_vs_centroid_p": 0.0002773497778044169,
+   "symprior_vs_msp_p": 6.593110662119658e-05,
+   "symprior_vs_knn_p": 0.0002773497778044169
+  },
+  "fieldC_loco|bioclip2|k2": {
+   "auroc_symprior": [
+    57.625048842646876,
+    12.618429942440722
+   ],
+   "fpr95_symprior": [
+    84.00406441305088,
+    11.553074928586549
+   ],
+   "closed_bal_acc_symprior": [
+    39.35289134376609,
+    3.52639786231039
+   ],
+   "auroc_centroid": [
+    55.037620001975824,
+    8.775744900109988
+   ],
+   "fpr95_centroid": [
+    87.98365287680113,
+    9.133489486465143
+   ],
+   "closed_bal_acc_centroid": [
+    38.12202970274977,
+    4.752510397326697
+   ],
+   "auroc_knn": [
+    54.1250411768375,
+    9.014945960385903
+   ],
+   "fpr95_knn": [
+    88.55244117540262,
+    8.563800124915057
+   ],
+   "closed_bal_acc_knn": [
+    38.12202970274977,
+    4.752510397326697
+   ],
+   "auroc_msp": [
+    49.792775140304414,
+    13.284412118319773
+   ],
+   "fpr95_msp": [
+    89.67649274746395,
+    7.702935240369207
+   ],
+   "closed_bal_acc_msp": [
+    38.501408348978984,
+    4.6012160907139315
+   ],
+   "name_img_top1": [
+    21.422149385029417,
+    19.25077412997835
+   ],
+   "name_group_top1": [
+    50.0,
+    50.0
+   ],
+   "name_group_top3": [
+    50.0,
+    50.0
+   ],
+   "per_class_name_group_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Healthy": [
+    56.6458855889176,
+    10.325560902012857
+   ],
+   "flag20_precision": [
+    18.00176056338028,
+    9.407303994964755
+   ],
+   "flag20_name_top1": [
+    6.25,
+    24.206145913796355
+   ],
+   "flag20_name_top3": [
+    25.0,
+    43.30127018922193
+   ],
+   "per_class_name_group_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Early blight": [
+    59.83827643291139,
+    3.7606065703650584
+   ],
+   "per_class_name_group_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Septoria leaf spot": [
+    60.28040787242211,
+    5.20440128528115
+   ],
+   "per_class_name_group_Bacterial spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Bacterial spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Bacterial spot": [
+    60.172395149455475,
+    3.6134841593608322
+   ],
+   "per_class_name_group_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Late blight": [
+    75.99132800411677,
+    2.198542996069194
+   ],
+   "per_class_name_group_Mosaic virus": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Mosaic virus": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Mosaic virus": [
+    44.43230190000856,
+    3.78257385248525
+   ],
+   "per_class_name_group_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Yellow leaf curl virus": [
+    39.86820236136636,
+    14.274344787411735
+   ],
+   "per_class_name_group_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Leaf mold": [
+    63.7715934319768,
+    2.479104031975515
+   ],
+   "symprior_vs_centroid_p": 0.005733220419627675,
+   "symprior_vs_msp_p": 2.458901769817436e-07,
+   "symprior_vs_knn_p": 0.0006964444225892946
+  },
+  "fieldC_loco|bioclip2|k5": {
+   "auroc_symprior": [
+    57.57383829409324,
+    15.56509256373635
+   ],
+   "fpr95_symprior": [
+    83.05174840070893,
+    14.630167694187115
+   ],
+   "closed_bal_acc_symprior": [
+    46.60189454121773,
+    3.8487263755558865
+   ],
+   "auroc_centroid": [
+    54.93321571095396,
+    9.25446473995408
+   ],
+   "fpr95_centroid": [
+    87.75425712569329,
+    9.215777845191928
+   ],
+   "closed_bal_acc_centroid": [
+    45.58721731816487,
+    4.029673288507021
+   ],
+   "auroc_knn": [
+    54.05085567466581,
+    9.01459689773791
+   ],
+   "fpr95_knn": [
+    88.1069750480106,
+    9.109672329048305
+   ],
+   "closed_bal_acc_knn": [
+    45.58721731816487,
+    4.029673288507021
+   ],
+   "auroc_msp": [
+    50.57392050612206,
+    13.455011483585627
+   ],
+   "fpr95_msp": [
+    88.32931733944551,
+    8.4535566808758
+   ],
+   "closed_bal_acc_msp": [
+    45.50469922313198,
+    3.811211807664516
+   ],
+   "name_img_top1": [
+    21.422149385029417,
+    19.25077412997835
+   ],
+   "name_group_top1": [
+    50.0,
+    50.0
+   ],
+   "name_group_top3": [
+    50.0,
+    50.0
+   ],
+   "per_class_name_group_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Healthy": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Healthy": [
+    47.21834164926759,
+    6.44191879586418
+   ],
+   "flag20_precision": [
+    20.384203427483335,
+    11.86032567411669
+   ],
+   "flag20_name_top1": [
+    15.0,
+    35.70714214271425
+   ],
+   "flag20_name_top3": [
+    51.25,
+    49.98437255783051
+   ],
+   "per_class_name_group_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Early blight": [
+    63.11621670825936,
+    3.1980150606005036
+   ],
+   "per_class_name_group_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Septoria leaf spot": [
+    67.06506826175458,
+    4.535664952455765
+   ],
+   "per_class_name_group_Bacterial spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Bacterial spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Bacterial spot": [
+    67.34596142787731,
+    3.436906572271959
+   ],
+   "per_class_name_group_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Late blight": [
+    78.30177812892173,
+    4.3561045426375316
+   ],
+   "per_class_name_group_Mosaic virus": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Mosaic virus": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Mosaic virus": [
+    41.853732275577435,
+    3.5615469358731593
+   ],
+   "per_class_name_group_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Yellow leaf curl virus": [
+    31.261578766130405,
+    8.611824946043237
+   ],
+   "per_class_name_group_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Leaf mold": [
+    64.42802913495748,
+    2.9371066991777504
+   ],
+   "symprior_vs_centroid_p": 0.04396329320180579,
+   "symprior_vs_msp_p": 5.504485748708624e-08,
+   "symprior_vs_knn_p": 0.0077691866252886715
+  },
+  "fieldC_loco|bioclip|k1": {
+   "auroc_symprior": [
+    56.6436784304628,
+    9.4977134965891
+   ],
+   "fpr95_symprior": [
+    88.38438563995172,
+    6.885921942781847
+   ],
+   "closed_bal_acc_symprior": [
+    33.544708805416505,
+    4.012748583692571
+   ],
+   "auroc_centroid": [
+    54.62619690557801,
+    8.058254160413815
+   ],
+   "fpr95_centroid": [
+    89.45292649572765,
+    6.785659530689621
+   ],
+   "closed_bal_acc_centroid": [
+    30.076307785445657,
+    4.807693994446543
+   ],
+   "auroc_knn": [
+    54.62621202849709,
+    8.05827307284145
+   ],
+   "fpr95_knn": [
+    89.45292649572765,
+    6.785659530689621
+   ],
+   "closed_bal_acc_knn": [
+    30.076307785445657,
+    4.807693994446543
+   ],
+   "auroc_msp": [
+    51.159617543036816,
+    9.729527821623611
+   ],
+   "fpr95_msp": [
+    91.26713504886236,
+    5.3606087585844024
+   ],
+   "closed_bal_acc_msp": [
+    31.602423713438004,
+    4.446830300025067
+   ],
+   "name_img_top1": [
+    12.224269213487238,
+    5.120732652412206
+   ],
+   "name_group_top1": [
+    12.5,
+    33.071891388307385
+   ],
+   "name_group_top3": [
+    62.5,
+    48.41229182759271
+   ],
+   "per_class_name_group_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Healthy": [
+    57.193481380015534,
+    9.590246378100556
+   ],
+   "flag20_precision": [
+    16.816785644910645,
+    8.230578425035208
+   ],
+   "flag20_name_top1": [
+    11.25,
+    31.598061649411346
+   ],
+   "flag20_name_top3": [
+    41.25,
+    49.228421668788044
+   ],
+   "per_class_name_group_Early blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Early blight": [
+    55.772336838513425,
+    5.244593776730502
+   ],
+   "per_class_name_group_Septoria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Septoria leaf spot": [
+    56.05529289885892,
+    8.150327681916245
+   ],
+   "per_class_name_group_Bacterial spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Bacterial spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Bacterial spot": [
+    58.96478529106346,
+    4.166664987622251
+   ],
+   "per_class_name_group_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Late blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Late blight": [
+    66.4205105239588,
+    8.776164400082726
+   ],
+   "per_class_name_group_Mosaic virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Mosaic virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Mosaic virus": [
+    45.43373562241487,
+    6.498620282807725
+   ],
+   "per_class_name_group_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Yellow leaf curl virus": [
+    55.2003149222828,
+    12.454315758768674
+   ],
+   "per_class_name_group_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Leaf mold": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Leaf mold": [
+    58.10896996659456,
+    3.4273841512856964
+   ]
+  },
+  "fieldC_loco|bioclip|k2": {
+   "auroc_symprior": [
+    57.969075046495504,
+    10.031600342662687
+   ],
+   "fpr95_symprior": [
+    85.93459600862323,
+    8.087467924269031
+   ],
+   "closed_bal_acc_symprior": [
+    39.37702783980608,
+    4.222241071853458
+   ],
+   "auroc_centroid": [
+    55.9186281604992,
+    7.883801720300484
+   ],
+   "fpr95_centroid": [
+    87.99497455580669,
+    9.680340746866955
+   ],
+   "closed_bal_acc_centroid": [
+    37.10477851722787,
+    4.568777405145719
+   ],
+   "auroc_knn": [
+    55.35242137491713,
+    6.569159702131641
+   ],
+   "fpr95_knn": [
+    88.96698011645931,
+    7.034152321666101
+   ],
+   "closed_bal_acc_knn": [
+    37.10477851722787,
+    4.568777405145719
+   ],
+   "auroc_msp": [
+    50.30315811469686,
+    10.50522992504241
+   ],
+   "fpr95_msp": [
+    91.57571961701669,
+    5.5328027593487885
+   ],
+   "closed_bal_acc_msp": [
+    38.13251912590608,
+    4.631858493859677
+   ],
+   "name_img_top1": [
+    12.224269213487238,
+    5.120732652412206
+   ],
+   "name_group_top1": [
+    12.5,
+    33.071891388307385
+   ],
+   "name_group_top3": [
+    62.5,
+    48.41229182759271
+   ],
+   "per_class_name_group_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Healthy": [
+    53.125443672367716,
+    15.055282055602637
+   ],
+   "flag20_precision": [
+    17.438380281690144,
+    9.068008102840661
+   ],
+   "flag20_name_top1": [
+    12.5,
+    33.071891388307385
+   ],
+   "flag20_name_top3": [
+    55.0,
+    49.749371855331
+   ],
+   "per_class_name_group_Early blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Early blight": [
+    59.540712119263844,
+    3.521122404417756
+   ],
+   "per_class_name_group_Septoria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Septoria leaf spot": [
+    61.666526946409896,
+    6.320844694302994
+   ],
+   "per_class_name_group_Bacterial spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Bacterial spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Bacterial spot": [
+    60.9436935197343,
+    3.6756221864544854
+   ],
+   "per_class_name_group_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Late blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Late blight": [
+    66.8567428392526,
+    8.59787580008678
+   ],
+   "per_class_name_group_Mosaic virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Mosaic virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Mosaic virus": [
+    47.13994789331893,
+    6.969396058704836
+   ],
+   "per_class_name_group_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Yellow leaf curl virus": [
+    55.80909351322573,
+    11.219765671637074
+   ],
+   "per_class_name_group_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Leaf mold": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Leaf mold": [
+    58.67043986839101,
+    3.78067124547252
+   ]
+  },
+  "fieldC_loco|bioclip|k5": {
+   "auroc_symprior": [
+    58.19587736020314,
+    10.741924986199125
+   ],
+   "fpr95_symprior": [
+    85.18160589383821,
+    8.550717651951807
+   ],
+   "closed_bal_acc_symprior": [
+    46.33685450838944,
+    3.615472840354227
+   ],
+   "auroc_centroid": [
+    56.344928768693784,
+    6.268134455494636
+   ],
+   "fpr95_centroid": [
+    89.35666327230396,
+    6.1435159211670305
+   ],
+   "closed_bal_acc_centroid": [
+    45.85544212705632,
+    3.9229232960186287
+   ],
+   "auroc_knn": [
+    55.670719968879155,
+    5.429747693364802
+   ],
+   "fpr95_knn": [
+    89.52931655959526,
+    5.702219909567015
+   ],
+   "closed_bal_acc_knn": [
+    45.85544212705632,
+    3.9229232960186287
+   ],
+   "auroc_msp": [
+    51.38423065341377,
+    9.072290965060278
+   ],
+   "fpr95_msp": [
+    91.03567877451943,
+    5.297453985502309
+   ],
+   "closed_bal_acc_msp": [
+    46.46702551578771,
+    3.6157601269241466
+   ],
+   "name_img_top1": [
+    12.224269213487238,
+    5.120732652412206
+   ],
+   "name_group_top1": [
+    12.5,
+    33.071891388307385
+   ],
+   "name_group_top3": [
+    62.5,
+    48.41229182759271
+   ],
+   "per_class_name_group_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Healthy": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Healthy": [
+    46.275217905395394,
+    10.780170956627787
+   ],
+   "flag20_precision": [
+    18.716346662435207,
+    10.460644757400905
+   ],
+   "flag20_name_top1": [
+    20.0,
+    40.0
+   ],
+   "flag20_name_top3": [
+    66.25,
+    47.285700798444346
+   ],
+   "per_class_name_group_Early blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Early blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Early blight": [
+    63.20074053656738,
+    4.2153021093640275
+   ],
+   "per_class_name_group_Septoria leaf spot": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Septoria leaf spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Septoria leaf spot": [
+    66.00044189048046,
+    4.791548149477574
+   ],
+   "per_class_name_group_Bacterial spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_name_top3_Bacterial spot": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Bacterial spot": [
+    64.60328493036299,
+    3.7911427279753984
+   ],
+   "per_class_name_group_Late blight": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Late blight": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Late blight": [
+    69.2315862414153,
+    6.296200207152769
+   ],
+   "per_class_name_group_Mosaic virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Mosaic virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Mosaic virus": [
+    47.01488293728753,
+    5.7788629671931036
+   ],
+   "per_class_name_group_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Yellow leaf curl virus": [
+    0.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Yellow leaf curl virus": [
+    48.13872000617578,
+    6.578507690686608
+   ],
+   "per_class_name_group_Leaf mold": [
+    0.0,
+    0.0
+   ],
+   "per_class_name_top3_Leaf mold": [
+    100.0,
+    0.0
+   ],
+   "per_class_auroc_symprior_Leaf mold": [
+    61.102144433940296,
+    3.158119906173907
+   ]
+  }
+ },
+ "fig1_thumb_index": [
+  44,
+  20,
+  106,
+  161
+ ],
+ "fig1_raw_zeroshot_balacc": 27.806671449067434,
+ "fig1_corrected_zeroshot_balacc": 61.70779697454738,
+ "fig2_bestprobe_A": "MobileNetV3 (Okra DiseaseNet)",
+ "fig2_bestprobe_B": "BioCLIP",
+ "fig2_bestprobe_C": "BioCLIP"
+}

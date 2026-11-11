@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this benchmark or code, please cite the paper below."
+title: "Open-world crop leaf disease recognition in new fields with symptom-description priors: benchmark and code"
+authors:
+  - family-names: NallaPerumal
+    given-names: LalithPrabu
+    affiliation: "SRM Institute of Science and Technology"
+  - family-names: Shanmugasundaram
+    given-names: Senthilraja
+    affiliation: "SRM Institute of Science and Technology"
+license: MIT
+type: software
+preferred-citation:
+  type: conference-paper
+  title: "From Unknown to Known: Open-World Crop Leaf Disease Recognition in New Fields with Symptom-Description Priors"
+  authors:
+    - family-names: NallaPerumal
+      given-names: LalithPrabu
+    - family-names: Shanmugasundaram
+      given-names: Senthilraja
+  collection-title: "International Conference on Computational Intelligence in Data Science (ICCIDS 2027)"
+  year: 2027
