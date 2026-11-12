@@ -37,7 +37,7 @@ def ks(ds):
     return sorted({int(k.rsplit("|", 1)[1]) for k in PR[ds]})
 
 
-BASE = ["probe", "centroid", "tipadapter", "tipadapter_gap", "alignmix", "zeroshot"]          # every non-SymPrior method, every feature extractor
+BASE = ["probe", "centroid", "tipadapter", "tipadapter_gap", "alignmix", "centroid_gap", "probe_gap", "zeroshot"]   # mixfix_gap is an ablation, not a baseline          # every non-SymPrior method, every feature extractor
 FEATS = {"clip_bioclip2": "BioCLIP-2", "clip_bioclip": "BioCLIP", "dinov2": "DINOv2", "mnv3": "MobileNetV3 (ImageNet)",
          "source": "MobileNetV3 (Okra DiseaseNet)"}
 
@@ -61,6 +61,9 @@ for ds in [d for d in ("A", "B", "C") if d in PR]:
             rec["vs_same_probe_wins"] = int((d2 > 0).sum())
             d3 = np.array(ba(ds, f"clip_bioclip2|symprior_inductive|{k}")) - np.array(ba(ds, best))
             rec["inductive_vs_best"] = float(d3.mean()); rec["inductive_vs_best_p"] = float(wilcoxon(d3).pvalue) if np.any(d3 != 0) else 1.0
+        if k > 0:                                                    # ablation: the same gap-corrected prototypes with ONE fixed weight
+            d4 = np.array(ba(ds, sym)) - np.array(ba(ds, f"clip_bioclip2|mixfix_gap|{k}"))
+            rec["vs_mixfix"] = float(d4.mean()); rec["vs_mixfix_p"] = float(wilcoxon(d4).pvalue) if np.any(d4 != 0) else 1.0
         rec["inductive"] = float(np.mean(ba(ds, f"clip_bioclip2|symprior_inductive|{k}")))
         rec["zeroshot"] = float(np.mean(ba(ds, f"clip_bioclip2|zeroshot|{k}")))
         rec["nogap"] = float(np.mean(ba(ds, f"clip_bioclip2|symprior_nogap|{k}")))
@@ -80,19 +83,19 @@ for key, v in OS.items():
 for k in (1, 2):
     raw = OSR.get(f"fieldB|k{k}")
     if raw:
-        for other in ("clip:bioclip2|auroc_centroid", "clip:bioclip2|auroc_msp", "clip:bioclip2|auroc_knn"):
+        for other in ("clip:bioclip2|auroc_centroid", "clip:bioclip2|auroc_msp", "clip:bioclip2|auroc_knn", "clip:bioclip2|auroc_mcm"):
             d = np.array(raw["clip:bioclip2|auroc_symprior"]) - np.array(raw[other])
             N["open"][f"fieldB|k{k}"][f"symprior_vs_{other.split('_')[-1]}_p"] = float(wilcoxon(d).pvalue)
 for k in (1, 2, 5):
     raw = OSR.get(f"fieldC_loco|bioclip2|k{k}")
     if raw:
-        for other in ("auroc_centroid", "auroc_msp", "auroc_knn"):
+        for other in ("auroc_centroid", "auroc_msp", "auroc_knn", "auroc_mcm"):
             d = np.array(raw["auroc_symprior"]) - np.array(raw[other])
             N["open"][f"fieldC_loco|bioclip2|k{k}"][f"symprior_vs_{other.split('_')[-1]}_p"] = float(wilcoxon(d).pvalue)
 for k in (1, 2, 5):
     raw = OSR.get(f"source_loco|bioclip2|k{k}")
     if raw:
-        for other in ("auroc_centroid", "auroc_msp", "auroc_knn"):
+        for other in ("auroc_centroid", "auroc_msp", "auroc_knn", "auroc_mcm"):
             d = np.array(raw["auroc_symprior"]) - np.array(raw[other])
             N["open"][f"source_loco|bioclip2|k{k}"][f"symprior_vs_{other.split('_')[-1]}_p"] = float(wilcoxon(d).pvalue)
 json.dump(N, open(os.path.join(ROOT, "results", "paper_numbers.json"), "w"), indent=1)
@@ -206,7 +209,7 @@ ab.hist(u[~isu], bins=bins, color="#7f9fbf", alpha=0.85, label="known diseases",
 ab.hist(u[isu], bins=bins, color="#d4a000", alpha=0.75, label="YVMV (unknown)", density=True)
 ab.set_yticks([]); ab.set_xlabel("unknown score $u=1-\\max_c\\mathbf{p}_c^{\\top}\\tilde{\\mathbf{x}}$", fontsize=FS - 0.8, labelpad=1)
 ab.tick_params(labelsize=FS - 1.2, length=1.5, pad=1); ab.legend(fontsize=FS - 1.5, frameon=False, loc="upper left", handlelength=0.9, borderaxespad=0.2)
-ab.set_title(f"(b) DETECT ($k$=2): mean AUROC {OS['fieldB|k2']['clip:bioclip2|auroc_symprior'][0]:.1f}", fontsize=FS, pad=2)
+ab.set_title("(b) DETECT: one episode, $k$=2", fontsize=FS, pad=2)
 ab.set_ylim(0, ab.get_ylim()[1] * 1.45)
 N["fig1_detect_episode_auroc"] = float(np.mean([(a > b) + 0.5 * (a == b) for a in u[isu] for b in u[~isu]]) * 100)
 # (c) name: pooled YVMV photographs, k=1 episode 0
@@ -251,7 +254,7 @@ fig.savefig(os.path.join(MS, "fig_concept.pdf"), bbox_inches=None); fig.savefig(
 json.dump(N, open(os.path.join(ROOT, "results", "paper_numbers.json"), "w"), indent=1)
 
 # Fig. 2: learning curves with 95% CIs
-fig, axs = plt.subplots(1, 3, figsize=(7.16, 2.35), gridspec_kw={"width_ratios": [1.25, 0.8, 1.15]})
+fig, axs = plt.subplots(1, 3, figsize=(7.16, 2.1), gridspec_kw={"width_ratios": [1.25, 0.8, 1.15]})
 for ax, ds, ttl in zip(axs, ("A", "B", "C"), ("Okra field A (2 classes)", "Okra field B (4 classes)", "Tomato, PlantDoc (8 classes)")):
     kk = ks(ds)
     def curve(key, lab, col, ls="-", mk="o"):
@@ -283,12 +286,12 @@ for ax, ds, ttl in zip(axs, ("A", "B", "C"), ("Okra field A (2 classes)", "Okra 
         ax.set_ylabel("")
     ax.grid(axis="y", lw=0.3, alpha=0.5)
 h, l = axs[0].get_legend_handles_labels()
-fig.tight_layout(w_pad=0.8, rect=(0, 0.17, 1, 1))
+fig.tight_layout(w_pad=0.8, rect=(0, 0.19, 1, 1))
 fig.legend(h, l, loc="lower center", ncol=5, frameon=False, fontsize=6.0, columnspacing=1.2, handlelength=2.2); fig.savefig(os.path.join(MS, "fig_curves.pdf")); plt.close(fig)
 json.dump(N, open(os.path.join(ROOT, "results", "paper_numbers.json"), "w"), indent=1)
 
 # Fig. 3: open world
-fig, axs = plt.subplots(1, 3, figsize=(7.16, 2.15), gridspec_kw={"width_ratios": [1.5, 1.1, 1.2]})
+fig, axs = plt.subplots(1, 3, figsize=(7.16, 1.95), gridspec_kw={"width_ratios": [1.5, 1.1, 1.2]})
 meths = [("symprior", "SymPrior (ours)", C["sym"]), ("centroid", "Prototype", C["cent"]), ("knn", "Nearest neighbour", C["tip"]), ("msp", "Max. softmax prob.", C["probe"])]
 groups = [("source_loco|bioclip2|k5", "", "DiseaseNet\n$k$=5"), ("fieldB|k1", "clip:bioclip2|", "Field B\n$k$=1"),
           ("fieldB|k2", "clip:bioclip2|", "Field B\n$k$=2"), ("fieldC_loco|bioclip2|k5", "", "Tomato\n$k$=5")]

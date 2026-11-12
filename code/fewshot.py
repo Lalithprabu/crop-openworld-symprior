@@ -328,6 +328,25 @@ def choose_lambda(model):
     return max(LAMBDAS, key=lambda a: np.mean(score[a])), {str(a): float(100 * np.mean(v)) for a, v in score.items()}
 
 
+def mix_fixed(Xs, ys, Xq, T, cls, lam, mu_img, mu_txt):
+    """Ablation of SymPrior: gap-corrected text and image prototypes mixed with ONE fixed weight, (1-lam) t + lam mean(x)."""
+    Xs_, Xq_, T_ = unit(Xs - mu_img), unit(Xq - mu_img), unit(T - mu_txt)
+    P = np.stack([unit((1 - lam) * T_[j] + lam * unit(Xs_[ys == c].mean(0))) for j, c in enumerate(cls)])
+    return cls[(Xq_ @ P.T).argmax(1)]
+
+
+def choose_lambda_fixed(model):
+    """Fixed mixing weight for the ablation, chosen on the SOURCE episodes exactly like tau (no target labels)."""
+    S = np.load(os.path.join(OUT_CACHE, "fs_source_clip.npz")); X, y, g = S[f"img_{model}"], S["y"], S["g"]
+    T = S[f"txt_{model}"][:len(CLASSES)]; cls = np.arange(len(CLASSES)); mu_t = txt_mean(S, model); score = {l: [] for l in LAMBDAS}
+    for k in (1, 2, 5, 10):
+        for d in range(5 if QUICK else 20):
+            rng = np.random.default_rng(77 + 100 * k + d); sup, qry = draw(y, g, k, rng)
+            for l in LAMBDAS:
+                score[l].append(balanced_accuracy_score(y[qry], mix_fixed(X[sup], y[sup], X[qry], T, cls, l, X.mean(0), mu_t)))
+    return max(LAMBDAS, key=lambda a: np.mean(score[a])), {str(a): float(100 * np.mean(v)) for a, v in score.items()}
+
+
 def txt_mean(S, mdl):
     """Text centre for the gap correction: mean of all 15 description-bank entries (fixed before any result, the same for every field)."""
     return S[f"bank_{mdl}"].mean(0)
@@ -357,8 +376,10 @@ def stage_probe():
         for mdl in [k[4:] for k in np.load(os.path.join(OUT_CACHE, "fs_source_clip.npz")).files if k.startswith("img_")]:
             taus[mdl] = choose_tau(mdl); print("tau for", mdl, "=", taus[mdl][0], flush=True)
     lams = {m: choose_lambda(m) for m in taus}
+    lamf = {m: choose_lambda_fixed(m) for m in taus}
     out["_tau"] = {m: {"chosen": v[0], "source_episode_bal_acc": v[1]} for m, v in taus.items()}
     out["_lambda"] = {m: {"chosen": v[0], "source_episode_bal_acc": v[1]} for m, v in lams.items()}
+    out["_lambda_fixed_mix"] = {m: {"chosen": v[0], "source_episode_bal_acc": v[1]} for m, v in lamf.items()}
     for ds in ("A", "B", "C"):                          # C = PlantDoc tomato (second crop), embedded by tomato.py
         fp = os.path.join(OUT_CACHE, f"fs_{ds}.npz")
         if not os.path.exists(fp):
@@ -390,6 +411,9 @@ def stage_probe():
                         P["alignmix_tuned"] = max((align_mix(X[sup], y[sup], X[qry], T, cls, l) for l in LAMBDAS),
                                                   key=lambda p: balanced_accuracy_score(y[qry], p))    # tuned on the test photos: upper bound
                         P["centroid"] = symprior(X[sup], y[sup], X[qry], T, cls, 0.0, mu_img, mu_txt, gap=False)
+                        P["centroid_gap"] = symprior(X[sup], y[sup], X[qry], T, cls, 0.0, mu_img, mu_txt, gap=True)   # same pool as SymPrior
+                        P["probe_gap"] = LogisticRegression(C=1.0, max_iter=5000).fit(Xg[sup], y[sup]).predict(Xg[qry])
+                        P["mixfix_gap"] = mix_fixed(X[sup], y[sup], X[qry], T, cls, lamf[mdl][0], mu_img, mu_txt)        # ablation
                         P["probe"] = LogisticRegression(C=1.0, max_iter=5000).fit(X[sup], y[sup]).predict(X[qry])
                     for meth, p in P.items():
                         res.setdefault(f"clip_{mdl}|{meth}|{k}", []).append(scores(y[qry], p))
@@ -480,6 +504,7 @@ def open_scores(Xs, ys, Xq, known, T=None, tau=0.0, mu_img=None, mu_txt=None):
         Xs_, Xq_, T_ = unit(Xs - mu_img), unit(Xq - mu_img), unit(T - mu_txt)
         P = np.stack([unit(tau * T_[j] + Xs_[ys == c].sum(0)) for j, c in enumerate(known)])
         s = Xq_ @ P.T; out["symprior"] = (1 - s.max(1), known[s.argmax(1)])
+        e = np.exp(unit(Xq) @ unit(T).T); out["mcm"] = (1 - (e / e.sum(1, keepdims=True)).max(1), known[(unit(Xq) @ unit(T).T).argmax(1)])
     C = np.stack([unit(Xs[ys == c].mean(0)) for c in known]); s = Xq @ C.T
     out["centroid"] = (1 - s.max(1), known[s.argmax(1)])
     out["knn"] = (1 - (Xq @ Xs.T).max(1), known[(Xq @ C.T).argmax(1)])

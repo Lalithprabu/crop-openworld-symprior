@@ -62,8 +62,8 @@ for k in (1, 2):
 # extra quantities quoted in the text
 M["Ak0zsBC"], M["Bk0zsBC"] = f1(P["A"]["clip_bioclip|zeroshot|0"]["bal_acc"][0]), f1(P["B"]["clip_bioclip|zeroshot|0"]["bal_acc"][0])
 M["Bk1ftbest"] = f1(max(FT["B"][f"mnv3_ft_{i}|ft|1"]["bal_acc"][0] for i in ("imagenet", "source")))
-M["AsymBCfortyk"] = f1(P["A"]["clip_bioclip|symprior|40"]["bal_acc"][0])
-M["nbaselines"] = str(len([k for k in P["B"] if k.endswith("|1") and k.split("|")[1] in ("probe", "centroid", "tipadapter", "tipadapter_gap", "alignmix", "zeroshot")]))
+M["AsymBCtwok"] = f1(P["A"]["clip_bioclip|symprior|2"]["bal_acc"][0]); M["AsymBCfortyk"] = f1(P["A"]["clip_bioclip|symprior|40"]["bal_acc"][0])
+M["nbaselines"] = str(len([k for k in P["B"] if k.endswith("|1") and k.split("|")[1] in ("probe", "centroid", "tipadapter", "tipadapter_gap", "alignmix", "centroid_gap", "probe_gap", "zeroshot")]))
 gaps = [N[f"{ds}|k{k}"]["symprior"][0] - N[f"{ds}|k{k}"]["inductive"] for ds in ("A", "B") for k in (0, 1, 2, 5, 10, 20, 40) if f"{ds}|k{k}" in N]
 M["indgapmax"] = f1(max(gaps))
 M["locomaxp"] = pf(max(N["open"][f"source_loco|bioclip2|k{k}"][f"symprior_vs_{m}_p"] for k in (1, 2, 5) for m in ("centroid", "msp", "knn")))
@@ -93,8 +93,22 @@ for k in (1, 2, 5):
     s_ = o[f"fieldC_loco|bioclip2|k{k}"]
     for m in ("symprior", "centroid", "knn", "msp"):
         M[f"Cloco{k}{m}"] = f1(s_[f"auroc_{m}"][0]); M[f"Cloco{k}fpr{m}"] = f"{s_[f'fpr95_{m}'][0]:.0f}"
-    M[f"Cloco{k}nametop1"] = f"{s_['name_group_top1'][0]:.0f}"; M[f"Cloco{k}nametop3"] = f"{s_['name_group_top3'][0]:.0f}"
+    M[f"Cloco{k}nametop1"] = f1(s_['name_group_top1'][0]); M[f"Cloco{k}nametop3"] = f1(s_['name_group_top3'][0])
     M[f"Cloco{k}nameimg"] = f1(s_["name_img_top1"][0])
+M["locomcmpone"] = pf(N["open"]["source_loco|bioclip2|k1"]["symprior_vs_mcm_p"])
+M["lamFix"] = str(P["_lambda_fixed_mix"]["bioclip2"]["chosen"])
+for ds in ("A", "B", "C"):
+    for k in (1, 2, 5, 10, 20):
+        r = N.get(f"{ds}|k{k}")
+        if r and "vs_mixfix" in r:
+            M[f"{ds}k{k}mix"] = f1(P[ds][f"clip_bioclip2|mixfix_gap|{k}"]["bal_acc"][0]); M[f"{ds}k{k}mixp"] = pf(r["vs_mixfix_p"])
+            M[f"{ds}k{k}mixdiff"] = sg(r["vs_mixfix"])
+            M[f"{ds}k{k}protogap"] = f1(P[ds][f"clip_bioclip2|centroid_gap|{k}"]["bal_acc"][0])
+            M[f"{ds}k{k}probegap"] = f1(P[ds][f"clip_bioclip2|probe_gap|{k}"]["bal_acc"][0])
+M["Cmaxall"] = f1(max(v["bal_acc"][0] for k_, v in P["C"].items() if "|" in k_ and "tuned" not in k_))
+for key, nm in (("source_loco|bioclip2|k5", "lococ5mcm"), ("fieldC_loco|bioclip2|k5", "Cloco5mcm")):
+    M[nm] = f1(o[key]["auroc_mcm"][0])
+M["fb2mcm"], M["fb1mcm"] = f1(o["fieldB|k2"]["clip:bioclip2|auroc_mcm"][0]), f1(o["fieldB|k1"]["clip:bioclip2|auroc_mcm"][0])
 M["Clocop"] = pf(max(N["open"]["fieldC_loco|bioclip2|k5"][f"symprior_vs_{m}_p"] for m in ("centroid", "msp", "knn")))
 M["Btipgaptunedmax"] = f1(max(P["B"][f"clip_bioclip2|tipadapter_gap_tuned|{k}"]["bal_acc"][0] for k in (1, 2)))
 for k in (1, 2, 5):
@@ -131,15 +145,17 @@ with open(os.path.join(MS, "numbers.tex"), "w") as f:
 
 # Table II: few-shot balanced accuracy
 KA, KB = [0, 1, 2, 5, 10, 20, 40], [0, 1, 2]
-rows = [("Zero-shot text", "clip_bioclip2|zeroshot", "BioCLIP-2"), ("Zero-shot text", "clip_bioclip|zeroshot", "BioCLIP"),
-        ("Tip-Adapter~\\cite{zhang2022tip}", "clip_bioclip2|tipadapter", "BioCLIP-2"), ("Tip-Adapter~\\cite{zhang2022tip}", "clip_bioclip|tipadapter", "BioCLIP"),
+rows = [("Zero-shot text", "clip_bioclip2|zeroshot", "BioCLIP-2"), 
+        ("Tip-Adapter~\\cite{zhang2022tip}", "clip_bioclip2|tipadapter", "BioCLIP-2"), 
         ("Tip-Adapter, gap corr.", "clip_bioclip2|tipadapter_gap", "BioCLIP-2"),
         ("Align+Mix~\\cite{goswami2026alignmix}", "clip_bioclip2|alignmix", "BioCLIP-2"),
         ("Prototype~\\cite{snell2017prototypical}", "clip_bioclip2|centroid", "BioCLIP-2"),
-        ("Linear probe", "clip_bioclip2|probe", "BioCLIP-2"), ("Linear probe", "clip_bioclip|probe", "BioCLIP"),
-        ("Linear probe", "dinov2|probe", "DINOv2"), ("Linear probe", "mnv3|probe", "MNv3-IN"), ("Linear probe", "source|probe", "MNv3-src"),
+        ("Prototype, gap corr.", "clip_bioclip2|centroid_gap", "BioCLIP-2"),
+        ("Linear probe", "clip_bioclip2|probe", "BioCLIP-2"), ("Linear probe, gap corr.", "clip_bioclip2|probe_gap", "BioCLIP-2"), ("Linear probe", "clip_bioclip|probe", "BioCLIP"),
+        ("Linear probe", "source|probe", "MNv3-src"),
         ("Fine-tuning", "FT:imagenet", "MNv3-IN"), ("Fine-tuning", "FT:source", "MNv3-src"),
         ("SymPrior, no gap corr.", "clip_bioclip2|symprior_nogap", "BioCLIP-2"),
+        ("Fixed-weight mix, gap corr.", "clip_bioclip2|mixfix_gap", "BioCLIP-2"),
         ("SymPrior, inductive", "clip_bioclip2|symprior_inductive", "BioCLIP-2"),
         ("\\textbf{SymPrior (ours)}", "clip_bioclip2|symprior", "BioCLIP-2"), ("\\textbf{SymPrior (ours)}", "clip_bioclip|symprior", "BioCLIP")]
 
@@ -154,10 +170,10 @@ def val(ds, key, k):
 
 best = {(ds, k): max(v[0] for v in (val(ds, key, k) for _, key, _ in rows) if v) for ds, KK in (("A", KA), ("B", KB)) for k in KK}
 lines = ["\\begin{table*}[t]", "\\centering",
-         "\\caption{Balanced accuracy (\\%) in the two new fields with $k$ labelled photographs per class. Mean over 20 group-disjoint "
-         "episodes (fine-tuning: 5), with the standard deviation in small type; the best value in each column is in bold. "
-         "MNv3-IN and MNv3-src: MobileNetV3-Large with ImageNet weights or trained on Okra DiseaseNet. Field B has too few distinct "
-         "leaves for $k>2$ (Section~\\ref{sec:setup}); a dash marks a method that needs labelled photographs (without labels, gap-corrected Tip-Adapter reduces to SymPrior at $k$=0). Prototypes on the other encoders were never better than the best value shown; all per-episode results are released.}",
+         "\\caption{Balanced accuracy (\\%) in the two okra fields with $k$ labelled photographs per class: mean over 20 group-disjoint "
+         "episodes (fine-tuning: 5), standard deviation in small type, best value per column in bold. MNv3-IN/-src: MobileNetV3-Large with ImageNet "
+         "weights or trained on Okra DiseaseNet; a dash marks a method that needs labels; field B allows $k\\le2$ (Section~\\ref{sec:setup}). "
+         "Probes on DINOv2 and ImageNet MobileNetV3, the tomato results (Fig.~\\ref{fig:curves}) and all per-episode results are in the repository.}",
          "\\label{tab:fewshot}", "\\footnotesize", "\\setlength{\\tabcolsep}{2.6pt}",
          "\\begin{tabular}{ll" + "c" * len(KA) + "|" + "c" * len(KB) + "}", "\\toprule",
          "& & \\multicolumn{%d}{c|}{Field A (healthy, Cercospora; chance 50\\%%)} & \\multicolumn{%d}{c}{Field B (4 classes; chance 25\\%%)}\\\\" % (len(KA), len(KB)),
@@ -182,7 +198,7 @@ lines += ["\\bottomrule", "\\end{tabular}", "\\end{table*}"]
 open(os.path.join(MS, "tab_fewshot.tex"), "w").write("\n".join(lines))
 
 # Table III: detection AUROC and closed-set accuracy
-meths = [("symprior", "\\textbf{SymPrior (ours)}"), ("centroid", "Prototype"), ("knn", "Nearest neighbour~\\cite{sun2022knn}"),
+meths = [("symprior", "\\textbf{SymPrior (ours)}"), ("mcm", "MCM~\\cite{ming2022mcm}"), ("centroid", "Prototype"), ("knn", "Nearest neighbour~\\cite{sun2022knn}"),
          ("msp", "Max.\\ softmax prob.~\\cite{hendrycks2017baseline}")]
 L = ["\\begin{table}[t]", "\\centering",
      "\\caption{Detecting an unknown disease (AUROC, \\%), BioCLIP-2 "

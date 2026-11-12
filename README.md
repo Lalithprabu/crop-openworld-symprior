@@ -31,7 +31,8 @@ and photographs taken within 5 s are grouped. **Labelled and test photographs ne
   1 Cercospora leaf spot, 2 leaf curl, 3 yellow vein mosaic; field C (tomato) uses the order in `index_C.csv`.
 - `benchmark/episodes.json` — every evaluation episode (support indices). Queries = all photographs outside the support groups.
 - `descriptions/descriptions.json` — the symptom descriptions and the naming banks (okra 15 entries, tomato 16).
-- `code/` — `fewshot.py` (methods, episodes, baselines incl. Tip-Adapter and Align+Mix), `analysis.py`, `make_tex.py`,
+- `code/` — `fewshot.py` (methods, episodes, baselines incl. Tip-Adapter, Align+Mix, gap-corrected prototype/probe, MCM, and the
+  fixed-weight ablation), `analysis.py`, `make_tex.py`,
   `tomato.py`, `prepare_tomato.py`, `export_*.py`.
 - `results/` — all results, including one record per episode (`*_raw.json`), so new methods can be compared with paired tests.
 
