@@ -2694,6 +2694,14 @@
   106,
   161
  ],
+ "fig1_detect_episode_auroc": 82.0591779354666,
+ "fig1_name_episode_top": [
+  "Yellow vein mosaic",
+  "Jassid hopper burn",
+  "Alternaria leaf spot",
+  "Fusarium wilt",
+  "Bacterial leaf spot"
+ ],
  "fig1_raw_zeroshot_balacc": 27.806671449067434,
  "fig1_corrected_zeroshot_balacc": 61.70779697454738,
  "fig2_bestprobe_A": "MobileNetV3 (Okra DiseaseNet)",

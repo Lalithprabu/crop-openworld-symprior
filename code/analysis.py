@@ -106,79 +106,147 @@ def unit(a):
     return a / (np.linalg.norm(a, axis=-1, keepdims=True) + 1e-8)
 
 
-# Fig. 1: overview of the pipeline on real field-B photographs (a) + modality gap on real data (b, c)
+# Fig. 1: overview on real okra field-B data. (a) pipeline, with the modality gap shown on the real embeddings (PCA);
+# (b) detect, (c) name, (d) learn: real results of each step; (e, f) text-photo similarity before/after gap correction.
 Z = np.load(os.path.join(ROOT, "cache", "fs_B.npz")); S = np.load(os.path.join(ROOT, "cache", "fs_source_clip.npz"))
-X, y, T = Z["clip_bioclip2"], Z["y"], Z["ctxt_bioclip2"]; mu_t = S["bank_bioclip2"].mean(0)          # text centre = mean of the 15-entry bank, as in the experiments
-W, H = 7.16, 2.75
+X, y, g, T = Z["clip_bioclip2"], Z["y"], Z["g"], Z["ctxt_bioclip2"]; BANK = S["bank_bioclip2"]; mu_t = BANK.mean(0)
+BNAMES = ["Healthy", "Alternaria leaf spot", "Cercospora leaf spot", "Downy mildew", "Leaf curl", "Phyllosticta leaf spot",
+          "Yellow vein mosaic", "Powdery mildew", "Enation leaf curl", "Bacterial leaf spot", "Anthracnose", "Fusarium wilt",
+          "Jassid hopper burn", "Spider mite damage", "Nitrogen deficiency"]
+CLS_COL = ["#4c9a2a", "#e08e45", "#8c564b", "#d4a000"]; TAU = N["tau"]["bioclip2"]; FS = 6.0
+
+
+def draw1(y_, g_, k, rng):                                 # identical to fewshot.draw: same seeds give the same episodes
+    sup = []
+    for c in np.unique(y_):
+        gs_ = np.unique(g_[y_ == c]); rng.shuffle(gs_)
+        for gg in gs_[:k]:
+            sup.append(rng.choice(np.where((g_ == gg) & (y_ == c))[0]))
+    sup = np.array(sup); return sup, np.where(~np.isin(g_, g_[sup]))[0]
+
+
+def pca2(A):
+    A = A - A.mean(0); U_, s_, Vt = np.linalg.svd(A, full_matrices=False); return A @ Vt[:2].T
+
+
+W, H = 7.16, 3.85
 fig = plt.figure(figsize=(W, H))
-ax = fig.add_axes([0, 0, 1, 1]); ax.axis("off"); ax.set_xlim(0, W); ax.set_ylim(0, H)       # overlay in inches
-def box(x0, y0, w, h, col, ec="#555555"):
-    ax.add_patch(FancyBboxPatch((x0, y0), w, h, boxstyle="round,pad=0.02,rounding_size=0.06", fc=col, ec=ec, lw=0.6))
-arr = dict(arrowstyle="-|>", lw=0.7, color="#333333", mutation_scale=6)
+ax = fig.add_axes([0, 0, 1, 1]); ax.axis("off"); ax.set_xlim(0, W); ax.set_ylim(0, H)
+def box(x0, y0, w, h, col, ec="#555555", lw=0.6):
+    ax.add_patch(FancyBboxPatch((x0, y0), w, h, boxstyle="round,pad=0.02,rounding_size=0.06", fc=col, ec=ec, lw=lw))
+arr = dict(arrowstyle="-|>", lw=0.8, color="#333333", mutation_scale=7)
 def arrow(p, q, **kw):
     ax.annotate("", xy=q, xytext=p, arrowprops={**arr, **kw})
-ax.text(0.02, H - 0.1, "(a) Detect, name and learn in a new field", fontsize=7.5, fontweight="bold", va="top")
-# real photographs: the most typical photograph (closest to its class mean embedding) of each field-B class
+ax.text(0.03, H - 0.02, "(a) The SymPrior pipeline in a new field (okra field B, real photographs and embeddings)", fontsize=7.4, fontweight="bold", va="top")
+y0b, y1b = 2.02, 3.58                                       # top band of boxes
+
+# 1 photos
+box(0.03, y0b, 1.5, y1b - y0b, "#f4f4f4")
+ax.text(0.78, y1b - 0.05, "Field photos (unlabelled)", ha="center", va="top", fontsize=FS, fontweight="bold")
 Xn = unit(X); thumbs = []
 for c in range(4):
     idx = np.where(y == c)[0]; thumbs.append(idx[np.argmax(Xn[idx] @ unit(Xn[idx].mean(0)))])
 N["fig1_thumb_index"] = [int(i) for i in thumbs]
-box(0.03, 1.27, 1.32, 1.2, "#f4f4f4")
-ax.text(0.69, 2.4, "Field photos (unlabelled)", ha="center", va="top", fontsize=5.6, fontweight="bold")
 tl = ["Healthy", "Cercospora LS", "Leaf curl", "YVMV (unseen)"]
 for n_, i in enumerate(thumbs):
-    r, c = divmod(n_, 2); x0, y0 = 0.12 + c * 0.6, 1.86 - r * 0.47
-    ia = fig.add_axes([x0 / W, y0 / H, 0.5 / W, 0.37 / H]); ia.imshow(Z["I352"][i][40:312, :, ::-1], aspect="auto"); ia.axis("off")
-    ax.text(x0 + 0.25, y0 - 0.015, tl[n_], ha="center", va="top", fontsize=4.6, color="#b22222" if c + r == 2 else "black")
-box(0.03, 0.08, 1.32, 1.1, "#f4f4f4")
-ax.text(0.69, 1.12, "Written symptom descriptions", ha="center", va="top", fontsize=5.6, fontweight="bold")
-for j, (cl, d) in enumerate((("Healthy", "uniformly green, no spots"), ("Cercospora", "sooty black angular spots"),
-                             ("Leaf curl", "curled, crinkled, thick veins"), ("YVMV", "bright yellow network of veins"))):
-    ax.text(0.09, 0.92 - j * 0.17, f"{cl}:", fontsize=4.6, fontweight="bold", va="top")
-    ax.text(0.09, 0.84 - j * 0.17, f"“{d}”", fontsize=4.6, style="italic", va="top")
-ax.text(0.69, 0.13, "+ 11 more (bank of 15)", ha="center", fontsize=4.3, color="#555555")
-box(1.55, 0.95, 0.8, 0.95, "#dbe7f5")
-ax.text(1.95, 1.425, "Biology\nfoundation\nmodel\n(BioCLIP-2)\nimage + text\nencoders", ha="center", va="center", fontsize=5.2)
-box(2.5, 0.95, 0.95, 0.95, "#dbe7f5")
-ax.text(2.975, 1.7, "Modality-gap\ncorrection", ha="center", va="center", fontsize=5.4, fontweight="bold")
-ax.text(2.975, 1.3, "$\\tilde{\\mathbf{x}}=\\frac{\\mathbf{x}-\\boldsymbol{\\mu}_v}{\\Vert\\cdot\\Vert}$\n$\\tilde{\\mathbf{t}}=\\frac{\\mathbf{t}-\\boldsymbol{\\mu}_t}{\\Vert\\cdot\\Vert}$",
-        ha="center", va="center", fontsize=5.6, linespacing=1.6)
-ax.text(2.975, 1.0, "label-free", ha="center", va="bottom", fontsize=4.4, color="#555555")
-arrow((1.35, 1.87), (1.55, 1.6)); arrow((1.35, 0.63), (1.55, 1.15)); arrow((2.35, 1.425), (2.5, 1.425))
-fb2, fb1 = OS["fieldB|k2"], OS["fieldB|k1"]
-stages = [("1  DETECT: a disease I know?", "$u=1-\\max_c\\,\\mathbf{p}_c^{\\top}\\tilde{\\mathbf{x}}$",
-           f"AUROC {fb2['clip:bioclip2|auroc_symprior'][0]:.1f} (field B, $k$=2)", "#fde9d9"),
-          ("2  NAME: which disease is it?", "closest of 12 candidate descriptions",
-           f"YVMV in top 3: {fb1['clip:bioclip2|name_group_top3'][0]:.0f}% of episodes", "#fff2cc"),
-          ("3  LEARN from $k$ labelled photos", "$\\mathbf{p}_c\\propto\\tau\\,\\tilde{\\mathbf{t}}_c+\\sum_i\\tilde{\\mathbf{x}}_i$  (SymPrior)",
-           f"{N['B|k1']['symprior'][0]:.1f}% bal. acc. with $k$=1 (field B)", "#e2f0d9")]
-for j, (t1, t2, t3, col) in enumerate(stages):
-    y0 = 1.72 - j * 0.8
-    box(3.6, y0, 1.42, 0.7, col)
-    ax.text(4.31, y0 + 0.6, t1, ha="center", va="top", fontsize=5.2, fontweight="bold")
-    ax.text(4.31, y0 + 0.36, t2, ha="center", va="center", fontsize=5.2)
-    ax.text(4.31, y0 + 0.07, t3, ha="center", va="bottom", fontsize=4.6, color="#1f3f73")
-    arrow((3.45, 1.425), (3.6, y0 + 0.35))
+    r, c = divmod(n_, 2); x0, yy0 = 0.1 + c * 0.7, y1b - 0.78 - r * 0.66
+    ia = fig.add_axes([x0 / W, yy0 / H, 0.64 / W, 0.5 / H]); ia.imshow(Z["I352"][i][30:322, :, ::-1], aspect="auto", interpolation="lanczos"); ia.axis("off")
+    ax.text(x0 + 0.32, yy0 - 0.02, tl[n_], ha="center", va="top", fontsize=FS - 0.5, color="#b22222" if n_ == 3 else "black",
+            fontweight="bold" if n_ == 3 else "normal")
+# 2 descriptions
+box(1.65, y0b, 1.45, y1b - y0b, "#f4f4f4")
+ax.text(2.375, y1b - 0.05, "Written symptom descriptions", ha="center", va="top", fontsize=FS, fontweight="bold")
+for j, (cl, d, col) in enumerate((("Healthy", "uniformly green, no spots", CLS_COL[0]), ("Cercospora LS", "sooty black angular spots", CLS_COL[1]),
+                                  ("Leaf curl", "curled, crinkled, thick veins", CLS_COL[2]), ("YVMV", "bright yellow network of veins", CLS_COL[3]))):
+    yy = y1b - 0.3 - j * 0.27
+    ax.text(1.72, yy, f"{cl}:", fontsize=FS - 0.4, fontweight="bold", va="top", color=col if j else "#2e6b16")
+    ax.text(1.72, yy - 0.1, f"“{d}”", fontsize=FS - 0.6, style="italic", va="top")
+ax.text(2.375, y0b + 0.08, "+ 8 look-alikes → bank of 15 names", ha="center", fontsize=FS - 0.8, color="#555555")
+# 3 encoder
+box(3.22, 2.32, 0.62, 0.95, "#dbe7f5")
+ax.text(3.53, 2.795, "BioCLIP-2\nimage +\ntext\nencoders", ha="center", va="center", fontsize=FS - 0.3)
+ax.plot([0.78, 0.78, 3.53], [y1b + 0.02, 3.635, 3.635], color="#333333", lw=0.8); arrow((3.53, 3.635), (3.53, 3.27)); arrow((3.10, 2.795), (3.22, 2.795))
+# 4 modality gap with real PCA
+box(3.96, y0b, 1.62, y1b - y0b, "#dbe7f5")
+ax.text(4.77, y1b - 0.05, "Modality-gap correction (no labels)", ha="center", va="top", fontsize=FS, fontweight="bold")
+for j, (ttl, Xp, Bp) in enumerate((("raw", unit(X), unit(BANK)), ("centred", unit(X - X.mean(0)), unit(BANK - mu_t)))):
+    P2 = pca2(np.vstack([Xp, Bp])); pi, pt = P2[:len(Xp)], P2[len(Xp):]
+    a2 = fig.add_axes([(4.04 + j * 0.78) / W, 2.42 / H, 0.7 / W, 0.88 / H])
+    for c in range(4):
+        a2.scatter(pi[y == c, 0], pi[y == c, 1], s=1.2, color=CLS_COL[c], alpha=0.7, lw=0)
+    a2.scatter(pt[:, 0], pt[:, 1], s=9, marker="*", color="black", lw=0)
+    a2.set_xticks([]); a2.set_yticks([]); a2.set_title(ttl, fontsize=FS - 1.0, pad=1.5)
+    for sp in a2.spines.values():
+        sp.set_linewidth(0.4)
+ax.text(4.77, 2.3, "$\\bullet$ photos (colour = class)    $\\bigstar$ descriptions", ha="center", va="top", fontsize=FS - 1.2, color="#333333")
+ax.text(4.77, 2.12, "$\\tilde{\\mathbf{x}}=\\frac{\\mathbf{x}-\\boldsymbol{\\mu}_v}{\\Vert\\cdot\\Vert}$,  $\\tilde{\\mathbf{t}}=\\frac{\\mathbf{t}-\\boldsymbol{\\mu}_t}{\\Vert\\cdot\\Vert}$",
+        ha="center", va="center", fontsize=FS + 0.4)
+arrow((3.84, 2.795), (3.96, 2.795))
+# 5 SymPrior
+box(5.7, y0b, 1.43, y1b - y0b, "#e2f0d9")
+ax.text(6.415, y1b - 0.05, "SymPrior (training-free)", ha="center", va="top", fontsize=FS, fontweight="bold")
+ax.text(6.415, y1b - 0.42, "$\\mathbf{p}_c\\propto\\tau\\,\\tilde{\\mathbf{t}}_c+\\sum_{i\\in S_c}\\tilde{\\mathbf{x}}_i$", ha="center", va="center", fontsize=FS + 1.6)
+for j, t_ in enumerate(("description = prior worth τ photos", f"τ = {TAU}, fixed on the source data", "each labelled photo adds evidence",
+                        "text weight τ/(τ+k) falls with k", "no gradient step, one vector sum")):
+    ax.text(5.78, y1b - 0.72 - j * 0.15, "• " + t_, fontsize=FS - 0.7, va="top")
+ax.text(6.415, y0b + 0.08, "posterior prototypes → (b) (c) (d)", ha="center", fontsize=FS - 0.8, color="#1f3f73")
+arrow((5.58, 2.795), (5.7, 2.795))
+
+# bottom band: real results of each step
+ax.plot([0.03, W - 0.03], [1.9, 1.9], color="#999999", lw=0.5)
+ax.text(0.03, 1.87, "Results of each step on okra field B (real data; YVMV is the disease unseen in the source data)", fontsize=6.6, fontweight="bold", va="top")
+# (b) detect: unknown-ness score in one k=2 episode
+rng = np.random.default_rng(900 + 10 * 2 + 0); keep = np.where(y != 3)[0]; known = np.array([0, 1, 2])
+sk, _ = draw1(y[keep], g[keep], 2, rng); sup = keep[sk]; qry = np.where(~np.isin(g, g[sup]))[0]
+Xc, Tc = unit(X - X.mean(0)), unit(T - mu_t)
+Pp = np.stack([unit(TAU * Tc[c] + Xc[sup][y[sup] == c].sum(0)) for c in known]); u = 1 - (Xc[qry] @ Pp.T).max(1); isu = y[qry] == 3
+ab = fig.add_axes([0.32 / W, 0.32 / H, 1.15 / W, 1.18 / H])
+bins = np.linspace(u.min(), u.max(), 18)
+ab.hist(u[~isu], bins=bins, color="#7f9fbf", alpha=0.85, label="known diseases", density=True)
+ab.hist(u[isu], bins=bins, color="#d4a000", alpha=0.75, label="YVMV (unknown)", density=True)
+ab.set_yticks([]); ab.set_xlabel("unknown score $u=1-\\max_c\\mathbf{p}_c^{\\top}\\tilde{\\mathbf{x}}$", fontsize=FS - 0.8, labelpad=1)
+ab.tick_params(labelsize=FS - 1.2, length=1.5, pad=1); ab.legend(fontsize=FS - 1.5, frameon=False, loc="upper left", handlelength=0.9, borderaxespad=0.2)
+ab.set_title(f"(b) DETECT ($k$=2): mean AUROC {OS['fieldB|k2']['clip:bioclip2|auroc_symprior'][0]:.1f}", fontsize=FS, pad=2)
+ab.set_ylim(0, ab.get_ylim()[1] * 1.45)
+N["fig1_detect_episode_auroc"] = float(np.mean([(a > b) + 0.5 * (a == b) for a in u[isu] for b in u[~isu]]) * 100)
+# (c) name: pooled YVMV photographs, k=1 episode 0
+rng = np.random.default_rng(900 + 10 * 1 + 0); sk, _ = draw1(y[keep], g[keep], 1, rng); sup = keep[sk]; qry = np.where(~np.isin(g, g[sup]))[0]
+U_ = X[qry][y[qry] == 3]; sim = unit(unit(U_ - X.mean(0)).mean(0)) @ unit(BANK - mu_t).T
+allowed = [i for i, n in enumerate(BNAMES) if n not in ("Healthy", "Cercospora leaf spot", "Leaf curl")]
+order = sorted(allowed, key=lambda i: -sim[i])[:5]
+an = fig.add_axes([2.75 / W, 0.32 / H, 0.95 / W, 1.18 / H])
+an.barh(range(5), [sim[i] for i in order], color=["#d4a000" if BNAMES[i] == "Yellow vein mosaic" else "#b8b8b8" for i in order], height=0.7)
+an.set_yticks(range(5)); an.set_yticklabels([BNAMES[i] for i in order], fontsize=FS - 1.0); an.invert_yaxis()
+an.tick_params(labelsize=FS - 1.2, length=1.5, pad=1); an.set_xlabel("similarity of pooled photos", fontsize=FS - 0.8, labelpad=1)
+an.set_title(f"(c) NAME: top 3 in {OS['fieldB|k1']['clip:bioclip2|name_group_top3'][0]:.0f}% of episodes", fontsize=FS, pad=2)
+N["fig1_name_episode_top"] = [BNAMES[i] for i in order]
+# (d) learn
+al = fig.add_axes([4.2 / W, 0.32 / H, 1.0 / W, 1.18 / H]); kk = [0, 1, 2]
+al.plot(kk, [N[f"B|k{k}"]["symprior"][0] for k in kk], "-o", color=C["sym"], ms=2.5, lw=1.0, label="SymPrior")
+al.plot(kk[1:], [N[f"B|k{k}"]["best_baseline_mean"] for k in kk[1:]], "-s", color=C["probe"], ms=2.2, lw=0.9, label="best other method")
+al.plot(kk, [N[f"B|k{k}"]["zeroshot"] for k in kk], ":x", color="#888888", ms=2.5, lw=0.9, label="raw zero-shot")
+al.axhline(25, color="black", lw=0.4, ls=":"); al.set_xticks(kk); al.set_ylim(15, 92)
+al.tick_params(labelsize=FS - 1.2, length=1.5, pad=1); al.set_xlabel("labelled photos per class $k$", fontsize=FS - 0.8, labelpad=1)
+al.set_ylabel("bal. acc. (%)", fontsize=FS - 0.8, labelpad=1); al.legend(fontsize=FS - 1.5, frameon=False, loc="center right", handlelength=1.2)
+al.set_title(f"(d) LEARN: {N['B|k1']['symprior'][0]:.1f}% with $k$=1", fontsize=FS, pad=2)
+# (e, f) heatmaps: mean text-photo similarity per class
 names = ["H", "CLS", "LC", "YVMV"]
-for j, (title, Xp, Tp) in enumerate((("(b) Raw", unit(X), unit(T)), ("(c) Gap-corrected", unit(X - X.mean(0)), unit(T - mu_t)))):
+for j, (title, Xp, Tp) in enumerate((("(e) raw", unit(X), unit(T)), ("(f) gap-corrected", unit(X - X.mean(0)), unit(T - mu_t)))):
     M = np.stack([(Xp[y == c] @ Tp.T).mean(0) for c in range(4)])
     acc = 100 * np.mean([np.mean((Xp[y == c] @ Tp.T).argmax(1) == c) for c in range(4)])
-    a2 = fig.add_axes([(5.45 + j * 0.86) / W, 0.55 / H, 0.78 / W, 1.5 / H])
+    a2 = fig.add_axes([(5.72 + j * 0.72) / W, 0.32 / H, 0.62 / W, 1.18 / H])
     a2.imshow(M, cmap="Blues", vmin=M.min(), vmax=M.max(), aspect="auto")
     for i in range(4):
         for jj in range(4):
-            a2.text(jj, i, f"{M[i, jj]:.2f}".replace("-0.00", "0.00"), ha="center", va="center", fontsize=4.4, fontweight="bold" if i == jj else "normal",
-                    color="white" if M[i, jj] > M.min() + 0.6 * (M.max() - M.min()) else "black")
-    a2.set_xticks(range(4)); a2.set_xticklabels(names, fontsize=4.8, rotation=90); a2.set_yticks(range(4))
-    a2.set_yticklabels(names if j == 0 else [], fontsize=4.8); a2.tick_params(length=1.5, pad=1)
-    a2.set_xlabel("Description of class", fontsize=5.2, labelpad=1)
+            a2.text(jj, i, f"{M[i, jj]:.2f}".replace("-0.00", "0.00"), ha="center", va="center", fontsize=FS - 1.9,
+                    fontweight="bold" if i == jj else "normal", color="white" if M[i, jj] > M.min() + 0.6 * (M.max() - M.min()) else "black")
+    a2.set_xticks(range(4)); a2.set_xticklabels(names, fontsize=FS - 1.4, rotation=90); a2.set_yticks(range(4))
+    a2.set_yticklabels(names if j == 0 else [], fontsize=FS - 1.4); a2.tick_params(length=1.5, pad=1)
+    a2.set_xlabel("description", fontsize=FS - 1.0, labelpad=1)
     if j == 0:
-        a2.set_ylabel("Photographs of class", fontsize=5.2, labelpad=1)
-    a2.set_title(f"{title}\nzero-shot {acc:.1f}%", fontsize=5.6, pad=2)
-    a2.spines[:].set_visible(True)
+        a2.set_ylabel("photos", fontsize=FS - 1.0, labelpad=1)
+    a2.set_title(f"{title}\nzero-shot {acc:.1f}%", fontsize=FS - 0.6, pad=2)
     N[f"fig1_{'raw' if j == 0 else 'corrected'}_zeroshot_balacc"] = float(acc)
-ax.text(5.1, H - 0.1, "Text vs photo similarity (field B)", fontsize=6.2, fontweight="bold", va="top")
-ax.text(6.25, 0.08, "mean cosine similarity; diagonal = own description", ha="center", fontsize=4.4, color="#555555")
 fig.savefig(os.path.join(MS, "fig_concept.pdf"), bbox_inches=None); fig.savefig(os.path.join(MS, "fig_concept.png"), dpi=300, bbox_inches=None); plt.close(fig)
 json.dump(N, open(os.path.join(ROOT, "results", "paper_numbers.json"), "w"), indent=1)
 
