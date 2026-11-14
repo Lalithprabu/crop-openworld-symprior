@@ -35,6 +35,10 @@ and photographs taken within 5 s are grouped. **Labelled and test photographs ne
   fixed-weight ablation), `analysis.py`, `make_tex.py`,
   `tomato.py`, `prepare_tomato.py`, `export_*.py`.
 - `results/` — all results, including one record per episode (`*_raw.json`), so new methods can be compared with paired tests.
+- `results/vlm_answers/` — every answer of the open-weight vision–language chat models via Ollama (`qwen3-vl_8b-instruct`, reported in
+  the paper; `gemma3_4b`; and, as supplementary, `qwen3-vl_8b`, the thinking build, which often returned no answer), one line per question; `code/vlm_eval.py` asks them, `code/vlm_analyze.py` compares them with SymPrior on the same photographs.
+- `PREREGISTRATION.md` — the chat-model protocol, SymPrior-T (transductive EM), one-click labelling, the hybrid rule and the
+  distillation of chat-model answers, written before those results were analysed; all of them are reported.
 
 ## Reproducing
 
@@ -43,6 +47,9 @@ python prepare_tomato.py <PlantDoc folder> <out>      # field C index (optional;
 python fewshot.py embed <ext_a> <ext_b>               # okra embeddings (needs GPU/CPU + open_clip, timm)
 python tomato.py embed                                 # tomato embeddings
 python fewshot.py probe && python fewshot.py openset   # all experiments (seconds to minutes on a CPU)
+python symprior_t.py                                   # SymPrior-T and one-click labelling (CPU, minutes)
+python vlm_eval.py --t4quick                           # chat models via a local Ollama server (GPU; hours)
+python vlm_analyze.py                                  # chat models vs SymPrior, hybrid, distillation
 python analysis.py && python make_tex.py               # every number, table and figure of the paper
 ```
 
