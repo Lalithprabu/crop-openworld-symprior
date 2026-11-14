@@ -1,7 +1,7 @@
 {
  "_n_answers": {
   "gemma3_4b": 3085,
-  "qwen3-vl_8b-instruct": 3044,
+  "qwen3-vl_8b-instruct": 5183,
   "qwen3-vl_8b": 2917
  },
  "B": {
@@ -1229,22 +1229,71 @@
  "A": {
   "qwen3-vl_8b-instruct": {
    "T1": {
-    "n": 25,
-    "vlm": 100.0,
-    "symprior_k0": 88.0,
-    "symprior_t_k0": 92.0,
-    "p_mcnemar_vlm_vs_symprior_t": 0.5,
+    "n": 1082,
+    "vlm": 89.2988929889299,
+    "symprior_k0": 88.91041410414104,
+    "symprior_t_k0": 93.53491868252016,
+    "p_mcnemar_vlm_vs_symprior_t": 1.9596368034800084e-05,
     "n_invalid": 0,
-    "p_mcnemar_vlm_vs_symprior": 0.25,
+    "p_mcnemar_vlm_vs_symprior": 0.8148707813473881,
     "confusion_vlm": [
      [
-      0,
-      0
+      426,
+      116
      ],
      [
       0,
-      25
+      540
      ]
+    ]
+   },
+   "T2": {
+    "n": 1082,
+    "vlm": 90.12915129151291,
+    "symprior_k0": 88.91041410414104,
+    "symprior_t_k0": 93.53491868252016,
+    "p_mcnemar_vlm_vs_symprior_t": 0.0007171910479201684,
+    "n_invalid": 0,
+    "p_mcnemar_vlm_vs_symprior": 0.3502343653830734,
+    "confusion_vlm": [
+     [
+      435,
+      107
+     ],
+     [
+      0,
+      540
+     ]
+    ],
+    "hybrid": 93.53491868252016,
+    "deferred_frac": 0.0,
+    "defer_curve_pct": {
+     "0": 93.53491868252016,
+     "10": 94.46221128877956,
+     "20": 93.26499931665984,
+     "30": 92.34317343173431,
+     "50": 91.14391143911439,
+     "70": 90.22140221402213,
+     "100": 90.12915129151291
+    },
+    "distil_all_transductive": 93.08015580155802,
+    "distil_all_p_vs_symprior": 0.0001685218386291185,
+    "distil_all_p_vs_vlm": 0.0007317100653124087,
+    "distil_all_n_pseudo": 1082,
+    "distil_all_pseudo_acc": 90.11090573012939,
+    "distil_all_inductive": [
+     92.94797263360685,
+     0.801664518313044
+    ],
+    "vlm_on_inductive_halves": 90.0139436538332,
+    "distil_agree_transductive": 93.17274839415062,
+    "distil_agree_p_vs_symprior": 0.00012562947340398603,
+    "distil_agree_p_vs_vlm": 0.0004471991792769285,
+    "distil_agree_n_pseudo": 1019,
+    "distil_agree_pseudo_acc": 92.14916584887143,
+    "distil_agree_inductive": [
+     92.94797263360685,
+     0.801664518313044
     ]
    }
   }

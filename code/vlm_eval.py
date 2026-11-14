@@ -166,6 +166,10 @@ def main():
                     # the faster model first; then the rest of the original plan
         order = sorted(ok, key=lambda m: "gemma" not in m)
         runs = [(ds, "T4", m) for m in order for ds in ("B", "C")] + [r for r in runs if r[1] != "T4"]
+    only = [a.split("=", 1)[1] for a in sys.argv if a.startswith("--only=")]
+    if only:        # e.g. --only=A:T2,A:T1  runs just these blocks, in this order
+        want = [tuple(x.split(":")) for x in only[0].split(",")]
+        runs = [(ds, t, m) for ds, t in want for m in ok]
     for ds, task, m in runs:
         if True:
             fn = os.path.join(OUT, m.replace(":", "_").replace("/", "_") + ".jsonl")

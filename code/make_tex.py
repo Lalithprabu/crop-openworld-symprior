@@ -141,13 +141,13 @@ for c, nm in enumerate(["H", "CLS", "LC", "YVMV"]):
 # vision-language chat models (results/fs_vlm.json, src/vlm_analyze.py) and SymPrior-T (results/fs_symprior_t.json)
 V_, T_ = R("fs_vlm.json"), R("fs_symprior_t.json")
 MOD = {"qw": "qwen3-vl_8b-instruct", "ge": "gemma3_4b"}   # the thinking build (qwen3-vl_8b) is supplementary
-for ds in ("B", "C"):
+for ds in ("A", "B", "C"):
     for a, m in MOD.items():
         r = V_.get(ds, {}).get(m, {})
         for t in ("T1", "T2"):
             if t in r: M[f"v{ds}{a}{t}"] = f1(r[t]["vlm"])
         if "T2" in r:
-            M[f"v{ds}{a}p"] = pf(max(r["T2"]["p_mcnemar_vlm_vs_symprior"], r["T1"]["p_mcnemar_vlm_vs_symprior"]))
+            M[f"v{ds}{a}p"] = pf(max(r["T2"]["p_mcnemar_vlm_vs_symprior"], r["T1"]["p_mcnemar_vlm_vs_symprior"])) if "T1" in r else "--"
             for var in ("all",):
                 M[f"v{ds}{a}distil"] = f1(r["T2"][f"distil_{var}_transductive"]); M[f"v{ds}{a}distilind"] = f1(r["T2"][f"distil_{var}_inductive"][0])
                 M[f"v{ds}{a}half"] = f1(r["T2"]["vlm_on_inductive_halves"]); M[f"v{ds}{a}pseudo"] = f1(r["T2"]["distil_all_pseudo_acc"])
